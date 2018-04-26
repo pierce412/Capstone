@@ -7,18 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B4E7ABD2091619000ACA1EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7ABC2091619000ACA1EB /* Extensions.swift */; };
+		3B4E7AC12091704900ACA1EB /* EmergencyProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */; };
+		3B4E7AC32091769C00ACA1EB /* ProcedureStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7AC22091769C00ACA1EB /* ProcedureStep.swift */; };
+		3B69A6A22092228B000F0243 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6A12092228B000F0243 /* Aircraft.swift */; };
+		3B69A6A4209227CA000F0243 /* EPUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6A3209227CA000F0243 /* EPUser.swift */; };
+		3B69A6A920922C91000F0243 /* AircraftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6A820922C91000F0243 /* AircraftListViewController.swift */; };
+		3B69A6AB209230FF000F0243 /* AddAircraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6AA209230FF000F0243 /* AddAircraftViewController.swift */; };
+		3B69A6AD209237BC000F0243 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6AC209237BC000F0243 /* ScrollViewController.swift */; };
+		3B69A6AF2092389D000F0243 /* TableScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6AE2092389D000F0243 /* TableScrollViewController.swift */; };
+		3B69A6B1209249B4000F0243 /* EmergencyProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6B0209249B4000F0243 /* EmergencyProcedureViewController.swift */; };
 		3BC0F0C6208E326B00E20519 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0F0C5208E326B00E20519 /* AppDelegate.swift */; };
-		3BC0F0C8208E326B00E20519 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0F0C7208E326B00E20519 /* ViewController.swift */; };
-		3BC0F0CB208E326B00E20519 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0F0C9208E326B00E20519 /* Main.storyboard */; };
+		3BC0F0C8208E326B00E20519 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0F0C7208E326B00E20519 /* LoginViewController.swift */; };
 		3BC0F0CD208E326C00E20519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0F0CC208E326C00E20519 /* Assets.xcassets */; };
 		3BC0F0D0208E326C00E20519 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0F0CE208E326C00E20519 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B4E7ABC2091619000ACA1EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyProcedure.swift; sourceTree = "<group>"; };
+		3B4E7AC22091769C00ACA1EB /* ProcedureStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureStep.swift; sourceTree = "<group>"; };
+		3B69A6A12092228B000F0243 /* Aircraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aircraft.swift; sourceTree = "<group>"; };
+		3B69A6A3209227CA000F0243 /* EPUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPUser.swift; sourceTree = "<group>"; };
+		3B69A6A820922C91000F0243 /* AircraftListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftListViewController.swift; sourceTree = "<group>"; };
+		3B69A6AA209230FF000F0243 /* AddAircraftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAircraftViewController.swift; sourceTree = "<group>"; };
+		3B69A6AC209237BC000F0243 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		3B69A6AE2092389D000F0243 /* TableScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableScrollViewController.swift; sourceTree = "<group>"; };
+		3B69A6B0209249B4000F0243 /* EmergencyProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyProcedureViewController.swift; sourceTree = "<group>"; };
 		3BC0F0C2208E326B00E20519 /* EP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC0F0C5208E326B00E20519 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3BC0F0C7208E326B00E20519 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3BC0F0CA208E326B00E20519 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3BC0F0C7208E326B00E20519 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3BC0F0CC208E326C00E20519 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BC0F0CF208E326C00E20519 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BC0F0D1208E326C00E20519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +53,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B4E7ABB209160AC00ACA1EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3BC0F0CC208E326C00E20519 /* Assets.xcassets */,
+				3BC0F0CE208E326C00E20519 /* LaunchScreen.storyboard */,
+				3BC0F0D1208E326C00E20519 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3B4E7ABE2091619500ACA1EB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3B4E7ABC2091619000ACA1EB /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3B4E7ABF2091703600ACA1EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */,
+				3B4E7AC22091769C00ACA1EB /* ProcedureStep.swift */,
+				3B69A6A12092228B000F0243 /* Aircraft.swift */,
+				3B69A6A3209227CA000F0243 /* EPUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3B69A6A520922B61000F0243 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3BC0F0C7208E326B00E20519 /* LoginViewController.swift */,
+				3B69A6A820922C91000F0243 /* AircraftListViewController.swift */,
+				3B69A6AA209230FF000F0243 /* AddAircraftViewController.swift */,
+				3B69A6AC209237BC000F0243 /* ScrollViewController.swift */,
+				3B69A6AE2092389D000F0243 /* TableScrollViewController.swift */,
+				3B69A6B0209249B4000F0243 /* EmergencyProcedureViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
 		3BC0F0B9208E326A00E20519 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +114,11 @@
 		3BC0F0C4208E326B00E20519 /* EP */ = {
 			isa = PBXGroup;
 			children = (
+				3B4E7ABF2091703600ACA1EB /* Model */,
 				3BC0F0C5208E326B00E20519 /* AppDelegate.swift */,
-				3BC0F0C7208E326B00E20519 /* ViewController.swift */,
-				3BC0F0C9208E326B00E20519 /* Main.storyboard */,
-				3BC0F0CC208E326C00E20519 /* Assets.xcassets */,
-				3BC0F0CE208E326C00E20519 /* LaunchScreen.storyboard */,
-				3BC0F0D1208E326C00E20519 /* Info.plist */,
+				3B69A6A520922B61000F0243 /* View Controller */,
+				3B4E7ABB209160AC00ACA1EB /* Resources */,
+				3B4E7ABE2091619500ACA1EB /* Utils */,
 			);
 			path = EP;
 			sourceTree = "<group>";
@@ -124,7 +183,6 @@
 			files = (
 				3BC0F0D0208E326C00E20519 /* LaunchScreen.storyboard in Resources */,
 				3BC0F0CD208E326C00E20519 /* Assets.xcassets in Resources */,
-				3BC0F0CB208E326B00E20519 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,22 +193,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BC0F0C8208E326B00E20519 /* ViewController.swift in Sources */,
+				3BC0F0C8208E326B00E20519 /* LoginViewController.swift in Sources */,
+				3B4E7ABD2091619000ACA1EB /* Extensions.swift in Sources */,
+				3B69A6A4209227CA000F0243 /* EPUser.swift in Sources */,
+				3B69A6AF2092389D000F0243 /* TableScrollViewController.swift in Sources */,
+				3B69A6B1209249B4000F0243 /* EmergencyProcedureViewController.swift in Sources */,
+				3B4E7AC32091769C00ACA1EB /* ProcedureStep.swift in Sources */,
+				3B69A6A920922C91000F0243 /* AircraftListViewController.swift in Sources */,
 				3BC0F0C6208E326B00E20519 /* AppDelegate.swift in Sources */,
+				3B4E7AC12091704900ACA1EB /* EmergencyProcedure.swift in Sources */,
+				3B69A6AD209237BC000F0243 /* ScrollViewController.swift in Sources */,
+				3B69A6A22092228B000F0243 /* Aircraft.swift in Sources */,
+				3B69A6AB209230FF000F0243 /* AddAircraftViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3BC0F0C9208E326B00E20519 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BC0F0CA208E326B00E20519 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3BC0F0CE208E326C00E20519 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,7 +342,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CG8J8CVZL;
-				INFOPLIST_FILE = EP/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -300,7 +360,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CG8J8CVZL;
-				INFOPLIST_FILE = EP/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/EP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
