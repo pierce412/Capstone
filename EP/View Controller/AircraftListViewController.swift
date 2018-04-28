@@ -1,13 +1,14 @@
 //  AircraftListViewController.swift
 import UIKit
 class AircraftListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    private let myArray =  ["First","Second","Third"]
+    //MARK: - Properties
+    var aircraft: [Aircraft]?
     private var listTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupListTableView()
-        
+        self.title = "AircraftList"
     }
     fileprivate func setupListTableView() {
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
@@ -20,23 +21,25 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         listTableView.dataSource = self
         self.view.addSubview(listTableView)
     }
-
-
-    
     //MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myArray.count
+        return AircraftController.shared.allAircraft.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AircraftCell", for: indexPath)
-        cell.textLabel?.text = myArray[indexPath.row]
+        let ac = AircraftController.shared.allAircraft[indexPath.row]
+        cell.textLabel?.text = ac.tmsName
+        cell.detailTextLabel?.text = ac.tmsID
         return cell
     }
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        let ac = AircraftController.shared.allAircraft[indexPath.row]
+        let destinationVC = EPListViewController()
+        destinationVC.ac = ac
+        //destinationVC.categories = ac.categories
+        print("Destination A/C is  \(ac.tmsID)")
+        navigationController?.pushViewController(destinationVC, animated: true)
     }
-    
- 
-
 }

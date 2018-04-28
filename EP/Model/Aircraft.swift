@@ -9,8 +9,9 @@ class Aircraft {
     let interimChangeID: String
     let interimChangeDate: Date
     let emergencyProcedures: [EmergencyProcedure]
+    let categories: [String]
     
-    init(tmsID: String, tmsName: String, aircraftIconImageName: String, interimChangeID: String, interimChangeDate: Date, emergencyProcedures: [EmergencyProcedure])
+    init(tmsID: String, tmsName: String, aircraftIconImageName: String, interimChangeID: String, interimChangeDate: Date, emergencyProcedures: [EmergencyProcedure], categories: [String])
     {
         self.tmsID = tmsID
         self.tmsName = tmsName
@@ -18,5 +19,9 @@ class Aircraft {
         self.interimChangeID = interimChangeID
         self.interimChangeDate = interimChangeDate
         self.emergencyProcedures = emergencyProcedures
+        self.categories = categories
     }
+  
+    
+    
 }

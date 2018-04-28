@@ -11,5 +11,4 @@ class EPUser {
         self.email = email
         self.purchasedAircraft = purchasedAircraft
     }
-    
 }

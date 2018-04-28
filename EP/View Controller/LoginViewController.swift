@@ -1,6 +1,8 @@
 //  ViewController.swift
 import UIKit
 class LoginViewController: UIViewController {
+    //MARK: - Properties
+    //****************************** VIEWS ********************************
     let instructionLabel: UILabel = {
         let label = UILabel()
         label.text = "Please enter a valid @navy.mil or @usmc.mil email address."
@@ -23,8 +25,11 @@ class LoginViewController: UIViewController {
         button.backgroundColor = UIColor.rgb(red:  149, green: 204, blue: 244)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
         return button
     }()
+    //**********************************************************************
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
@@ -33,6 +38,11 @@ class LoginViewController: UIViewController {
         view.addSubview(submitButton)
         setupConstraints()
     }
+    //MARK: - Local Functions
+    @objc func submitButtonTapped() {
+        navigationController?.pushViewController(AircraftListViewController(), animated: true)
+    }
+    //MARK: - Constraints
     fileprivate func setupConstraints() {
         instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         instructionLabel.anchor(top: nil,

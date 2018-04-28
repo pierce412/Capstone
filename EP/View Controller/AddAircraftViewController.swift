@@ -9,7 +9,8 @@ class AddAircraftViewController: UIViewController, UITableViewDataSource, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAddTableView() 
+        setupAddTableView()
+        self.title = "Add Aircraft"
     }
     fileprivate func setupAddTableView() {
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
