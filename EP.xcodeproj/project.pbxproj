@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B04B64220926272001A3E9A /* EPListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B04B64120926272001A3E9A /* EPListViewController.swift */; };
+		3B0E8F7F209BC4C10063B3C8 /* t6.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E8F7E209BC4C10063B3C8 /* t6.json */; };
 		3B3210AD2093731200ADF36B /* AircraftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3210AC2093731200ADF36B /* AircraftController.swift */; };
 		3B4E7ABD2091619000ACA1EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7ABC2091619000ACA1EB /* Extensions.swift */; };
 		3B4E7AC12091704900ACA1EB /* EmergencyProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */; };
@@ -31,6 +32,7 @@
 		2D1C1EDE61C93D1DA1707787 /* Pods-EP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EP.release.xcconfig"; path = "Pods/Target Support Files/Pods-EP/Pods-EP.release.xcconfig"; sourceTree = "<group>"; };
 		3293DAD2F47A528E1FEF3A28 /* Pods-EP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EP/Pods-EP.debug.xcconfig"; sourceTree = "<group>"; };
 		3B04B64120926272001A3E9A /* EPListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPListViewController.swift; sourceTree = "<group>"; };
+		3B0E8F7E209BC4C10063B3C8 /* t6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = t6.json; sourceTree = "<group>"; };
 		3B3210AC2093731200ADF36B /* AircraftController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftController.swift; sourceTree = "<group>"; };
 		3B4E7ABC2091619000ACA1EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyProcedure.swift; sourceTree = "<group>"; };
@@ -71,6 +73,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3B15F5572095138900327ADB /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3BC0F0C5208E326B00E20519 /* AppDelegate.swift */,
+				3B0E8F7E209BC4C10063B3C8 /* t6.json */,
+				3B3210AC2093731200ADF36B /* AircraftController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
 		3B4E7ABB209160AC00ACA1EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +110,7 @@
 				3B4E7AC22091769C00ACA1EB /* ProcedureStep.swift */,
 				3B69A6A12092228B000F0243 /* Aircraft.swift */,
 				3B69A6A3209227CA000F0243 /* EPUser.swift */,
-				3B3210AC2093731200ADF36B /* AircraftController.swift */,
+				3B15F5572095138900327ADB /* Model Controller */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -137,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				3B4E7ABF2091703600ACA1EB /* Model */,
-				3BC0F0C5208E326B00E20519 /* AppDelegate.swift */,
 				3B69A6A520922B61000F0243 /* View Controller */,
 				3B4E7ABB209160AC00ACA1EB /* Resources */,
 				3B4E7ABE2091619500ACA1EB /* Utils */,
@@ -214,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BC0F0D0208E326C00E20519 /* LaunchScreen.storyboard in Resources */,
+				3B0E8F7F209BC4C10063B3C8 /* t6.json in Resources */,
 				3BC0F0CD208E326C00E20519 /* Assets.xcassets in Resources */,
 				3BE25A4C2092D8F40072AEA1 /* GoogleService-Info.plist in Resources */,
 			);
@@ -248,6 +260,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-EP/Pods-EP-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -257,6 +270,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",

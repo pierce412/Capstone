@@ -29,8 +29,8 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         if let ac = ac {
             arr = AircraftController.shared.configureAircraftForDisplay(aircraft: ac)
-            print("Here be 2D arrrrr")
-            print(arr)
+            //print("Here be 2D arrrrr")
+            //print(arr)
             self.title = "EP List"
             segControl = createSegControl()
             segControl.addTarget(self, action: #selector(segValueChanged), for: .valueChanged)
@@ -42,7 +42,7 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        tableView.reloadData()
+        //tableView.reloadData()
     }
     //MARK: SegmentedControl Method
     @objc func segValueChanged() {
@@ -65,20 +65,18 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EPCell", for: indexPath)
-        //        guard let ac = ac else { return UITableViewCell() }
-        //        cell.textLabel?.text = ac.emergencyProcedures[indexPath.row].title
         let ep = arr[segControl.selectedSegmentIndex][indexPath.row]
         cell.textLabel?.text = ep.title
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        guard let ep = ac?.emergencyProcedures[indexPath.row] else { return } 
-        let destinationVC = EmergencyProcedureViewController()
-        destinationVC.ep = ep
-        navigationController?.pushViewController(destinationVC, animated: true)
+            let ep = arr[segControl.selectedSegmentIndex][indexPath.row]
+            let destinationVC = EmergencyProcedureViewController()
+            destinationVC.ep = ep
+            print(ep.shortName)
+            navigationController?.pushViewController(destinationVC, animated: true)
+        
     }
-    
     //MARK: - Local Functions
     fileprivate func createSegControl() -> UISegmentedControl {
         guard let ac = ac else { return UISegmentedControl() }
@@ -88,12 +86,12 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let stringImage = ac.categories[index]
             let stringImageSelected = stringImage + "_selected"
             if let image = UIImage(named: stringImage) {
-                let selectedImage = UIImage(named: stringImageSelected)
+               // let selectedImage = UIImage(named: stringImageSelected)
                 items.append(image)
             }
         }
         let segToReturn = UISegmentedControl(items: items)
-        segToReturn.backgroundColor = UIColor.epYellow()
+        segToReturn.backgroundColor = UIColor.mainSchemeColor2()
         return segToReturn
     }
     //MARK: - Constraints

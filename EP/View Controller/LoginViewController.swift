@@ -1,5 +1,8 @@
-//  ViewController.swift
+//  LoginController.swift
 import UIKit
+import Firebase
+
+
 class LoginViewController: UIViewController {
     //MARK: - Properties
     //****************************** VIEWS ********************************
@@ -7,80 +10,215 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         label.text = "Please enter a valid @navy.mil or @usmc.mil email address."
         label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    lazy var loginRegisterButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.isEnabled = false
+        button.backgroundColor = UIColor.mainSchemeColor2()
+        button.setTitle("Register", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 8
+        button.layer.masksToBounds = true
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(handleLoginOrRegister), for: .touchUpInside)
+        return button
+    }()
+    let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "logo_placeholder")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    let inputsContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 5
+        view.layer.masksToBounds = true
+        return view
+    }()
+    let emailSeparatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     let emailTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
-        tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
-        tf.borderStyle = .roundedRect
-        tf.font = UIFont.systemFont(ofSize: 14)
+        tf.translatesAutoresizingMaskIntoConstraints = false
         tf.autocapitalizationType = .none
+        tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
-    let submitButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Submit", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.rgb(red:  149, green: 204, blue: 244)
-        button.layer.cornerRadius = 5
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
-        return button
+    let passwordTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Password"
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        tf.isSecureTextEntry = true
+        tf.autocapitalizationType = .none
+         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+        return tf
+    }()
+    lazy var loginRegisterSegmentedControl: UISegmentedControl = {
+        let sc = UISegmentedControl(items: ["Login", "Register"])
+        sc.backgroundColor = UIColor.mainSchemeColor3()
+        sc.translatesAutoresizingMaskIntoConstraints = false
+        sc.tintColor = UIColor.white
+        sc.layer.cornerRadius = 5
+        sc.layer.masksToBounds = true
+        sc.selectedSegmentIndex = 1
+        sc.addTarget(self, action: #selector(handleLoginRegisterSegmentedControlChange), for: .valueChanged)
+        return sc
     }()
     //**********************************************************************
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
-        view.addSubview(instructionLabel)
-        view.addSubview(emailTextField)
-        view.addSubview(submitButton)
-        setupConstraints()
+        view.backgroundColor = UIColor.mainSchemeColor1()
+        view.addSubview(loginRegisterSegmentedControl)
+        view.addSubview(inputsContainerView)
+        view.addSubview(loginRegisterButton)
+        view.addSubview(logoImageView)
+        setupLoginRegisterSegmentedControl()
+        setupInputsContainerView()
+        setupLoginRegisterButton()
+        setupLogoImageView()
     }
     //MARK: - Local Functions
-    @objc func submitButtonTapped() {
-        navigationController?.pushViewController(AircraftListViewController(), animated: true)
+
+    @objc func handleLoginOrRegister(){
+        if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
+            handleLogin()
+        }
+        else {
+            handleRegister()
+        }
     }
-    //MARK: - Constraints
-    fileprivate func setupConstraints() {
-        instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        instructionLabel.anchor(top: nil,
-                                left: nil,
-                                bottom: emailTextField.topAnchor,
-                                right: nil,
-                                paddingTop: 0,
-                                paddingLeft: 0,
-                                paddingBottom:-20,
-                                paddingRight: 0,
-                                width: 0,
-                                height: 0)
+    @objc fileprivate func handleLogin() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { print("Form is not valid"); return }
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                let ac = UIAlertController(title: "Sorry!", message: error?.localizedDescription, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)
+                ac.addAction(okAction)
+                self.present(ac, animated: true, completion: {
+                    print("Error alert presented to user")
+                })
+                print("Error logging in: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            print("logged in")
+            //self.navigationController?.pushViewController(AircraftListViewController(), animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    @objc fileprivate func handleRegister() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else { print("Form is not valid"); return }
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                let ac = UIAlertController(title: "Sorry!", message: error?.localizedDescription, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                ac.addAction(okAction)
+                self.present(ac, animated: true, completion: nil)
+                print("Error in handling registration: \(String(describing: error?.localizedDescription))")
+            }
+            guard let uid = user?.uid else { return }
+            let ref = Database.database().reference(fromURL: "https://emergencyprocedure-42955.firebaseio.com/")
+            let usersReference = ref.child("users").child(uid)
+            let values = ["email": email]
+            usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                if err != nil {
+                    print("Error saving user: \(String(describing: error?.localizedDescription))")
+                    return
+                }
+                print("User successfully registered into db")
+                //send email
+                Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                    print("Auth email error status: \(String(describing: error?.localizedDescription))")
+                })
+               
+                //alert user
+                let ac = UIAlertController(title: "Account verification required", message: "A verification e-mail has been sent to \(email)\n", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+               ac.addAction(okAction)
+                self.present(ac, animated: true, completion: {
+                    print("alert presented to user")
+                    self.loginRegisterSegmentedControl.selectedSegmentIndex = 0
+                })
+                //clear form
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
+                
+                //self.dismiss(animated: true, completion: nil)
+                //navigationController?.pushViewController(AircraftListViewController(), animated: true)
+            })
+        }
+    }
+    @objc func handleLoginRegisterSegmentedControlChange() {
+        let title = loginRegisterSegmentedControl.titleForSegment(at: loginRegisterSegmentedControl.selectedSegmentIndex)
+        loginRegisterButton.setTitle(title, for: .normal)
+    }
+    @objc func handleTextInputChange() {
+        guard let email = emailTextField.text?.lowercased() else { return }
+        guard let password = passwordTextField.text else { return }
+        let isFormValid = email.count > 0 && password.count > 4 && email.hasSuffix("@gmail.com")
         
-        emailTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        emailTextField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        emailTextField.anchor(top: nil,
-                              left: view.leftAnchor,
-                              bottom: nil,
-                              right: view.rightAnchor,
-                              paddingTop: 0,
-                              paddingLeft: 20,
-                              paddingBottom: 0,
-                              paddingRight: 20,
-                              width: view.frame.width / 1.2,
-                              height: 45)
+        if isFormValid {
+            loginRegisterButton.isEnabled = true
+            loginRegisterButton.backgroundColor = UIColor.mainSchemeColor3()
+        }
+        else {
+            loginRegisterButton.isEnabled = false
+            loginRegisterButton.backgroundColor = UIColor.mainSchemeColor2()
+        }
+    }
+    fileprivate func setupInputsContainerView() {
+        inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
+        inputsContainerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        submitButton.anchor(top: emailTextField.bottomAnchor,
-                            left: view.leftAnchor,
-                            bottom: nil,
-                            right: view.rightAnchor,
-                            paddingTop: 20,
-                            paddingLeft: 20,
-                            paddingBottom: 0,
-                            paddingRight: 20,
-                            width: view.frame.width / 1.2,
-                            height: 45)
+        inputsContainerView.addSubview(emailTextField)
+        inputsContainerView.addSubview(emailSeparatorView)
+        inputsContainerView.addSubview(passwordTextField)
         
+        emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
+        emailTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2).isActive = true
+        
+        emailSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
+        emailSeparatorView.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        emailSeparatorView.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailSeparatorView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
+        passwordTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2).isActive = true
+    }
+    fileprivate func setupLoginRegisterSegmentedControl() {
+        loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loginRegisterSegmentedControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
+        loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    }
+    fileprivate func setupLoginRegisterButton() {
+    loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+    loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 12).isActive = true
+    loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+    loginRegisterButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+    }
+    fileprivate func setupLogoImageView() {
+        logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -20).isActive = true
+        logoImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        logoImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
 }
-

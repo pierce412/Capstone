@@ -1,6 +1,5 @@
 //  AddAircraftViewController.swift
 
-
 import UIKit
 
 class AddAircraftViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -11,6 +10,12 @@ class AddAircraftViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         setupAddTableView()
         self.title = "Add Aircraft"
+        let item = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTapped))
+        self.navigationItem.setLeftBarButton(item, animated: true)
+    }
+    @objc func cancelButtonTapped() {
+        print("Cancel button tapped")
+        navigationController?.popViewController(animated: true)
     }
     fileprivate func setupAddTableView() {
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height

@@ -1,6 +1,5 @@
 //  EPUser.swift
 import Foundation
-
 class EPUser {
     let uuid: UUID
     let email: String

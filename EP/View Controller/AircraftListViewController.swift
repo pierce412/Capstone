@@ -1,14 +1,61 @@
 //  AircraftListViewController.swift
 import UIKit
+import Firebase
+import NotificationCenter
+
 class AircraftListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Properties
+    var isVerified: Bool?
     var aircraft: [Aircraft]?
     private var listTableView: UITableView!
     
     override func viewDidLoad() {
+        
+        
+        
         super.viewDidLoad()
+        //notification to reload tableView
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        print("current user uid is: \(Auth.auth().currentUser?.uid)")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(handleLogout))
+        if Auth.auth().currentUser?.uid == nil {
+            perform(#selector(handleLogout), with: nil, afterDelay: 0)
+            handleLogout()
+        }
+        //guard let isVerified = Auth.auth().currentUser?.isEmailVerified else { return }
         setupListTableView()
-        self.title = "AircraftList"
+        self.title = String(describing: isVerified)
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        self.navigationItem.setRightBarButton(addButton, animated: true)
+//        self.navigationItem.leftBarButtonItem?.isEnabled = false
+    }
+    @objc fileprivate func loadList(notification: NSNotification) {
+        DispatchQueue.main.async {
+            self.listTableView.reloadData()
+        }
+        
+    }
+    @objc fileprivate func handleLogout() {
+        print("Handling logout")
+        do {
+            try Auth.auth().signOut()
+        }
+        catch let logoutError  {
+            print("Logout error")
+            let ac = UIAlertController(title: "Sorry", message: logoutError.localizedDescription, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            ac.addAction(okAction)
+            self.present(ac, animated: true, completion: nil)
+        }
+        let loginViewController = LoginViewController()
+        present(loginViewController, animated: true, completion: nil)
+        
+    }
+    
+    @objc fileprivate func addButtonTapped() {
+        print("Add button tapped")
+        navigationController?.pushViewController(AddAircraftViewController(), animated: true)
     }
     fileprivate func setupListTableView() {
         let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height

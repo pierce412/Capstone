@@ -1,10 +1,47 @@
 //  AircraftController.swift
 import UIKit
+import Firebase
+import NotificationCenter
+
 class AircraftController {
-    var allAircraft = [Aircraft]()
+    var allAircraft = [Aircraft]() {
+        didSet {
+            //notification to reload listTableView in AircraftListViewController
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        }
+    }
     static let shared = AircraftController()
-    //Save
+    let baseURL = URL(string: "https://emergencyprocedure-42955.firebaseio.com/")
+    
     //Need to save aircraft to phone with codable when they purchase
+    func fetchAircraft() {
+        guard let url = baseURL?.appendingPathComponent("Aircraft").appendingPathExtension("json") else { return }
+        
+        let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let data = data {
+                do {
+                   let jsonDecoder = JSONDecoder()
+                   jsonDecoder.dateDecodingStrategy = .iso8601
+                   let aircraft = try jsonDecoder.decode([Aircraft].self, from: data)
+                    print(aircraft[0].tmsName)
+//                    print(aircraft[0].categories)
+//                    print(aircraft[0].interimChangeID)
+//                    print(aircraft[0].interimChangeDate)
+//                    print(aircraft[0].emergencyProcedures)
+                    self.allAircraft = aircraft
+                    return
+                }
+                catch let e {
+                    print("Error decoding aircraft: \(e.localizedDescription)")
+                    return
+
+                }
+            }
+        }
+        dataTask.resume()
+    }
+    
+    
     
     func configureAircraftForDisplay(aircraft: Aircraft) -> [[EmergencyProcedure]] {
         var arrToReturn = [[EmergencyProcedure]]()
@@ -22,7 +59,13 @@ class AircraftController {
     }
     
     init() {
-        //dummy data
+        fetchAircraft()
+
+    }
+}
+
+
+        /*
         let step1a = ProcedureStep(type: .memory, step: "1. Do something")
         let step1b = ProcedureStep(type: .logic, step: "2. Do something more")
         let step1c = ProcedureStep(type: .note, step: "3. Do something else")
@@ -42,9 +85,8 @@ class AircraftController {
         let epArray = [ep1, ep2]
         
         let date = Date()
-        let aircraft1 = Aircraft(tmsID: "MV22", tmsName: "MV-22B/C Osprey", aircraftIconImageName: "", interimChangeID: "1-1", interimChangeDate: date, emergencyProcedures: epArray, categories: ["warning", "caution", "advisory", "flight", "ground"])
-        
-        //****************************************************************************************************************************************************************
+        let aircraft1 = Aircraft(tmsID: "MV22", tmsName: "MV-22B/C Osprey", aircraftIconImageName: "", interimChangeID: "1-1", interimChangeDate: date, categories: ["warning", "caution", "advisory", "flight", "ground"], emergencyProcedures: epArray)
+    
         
         let step3a = ProcedureStep(type: .memory, step: "1. Do something")
         let step3b = ProcedureStep(type: .memory, step: "2. Do something more")
@@ -67,17 +109,17 @@ class AircraftController {
         let epArray2 = [ep3, ep4]
         
         let date2 = Date()
-        let aircraft2 = Aircraft(tmsID: "UH1Y", tmsName: "UH-1Y Huey", aircraftIconImageName: "", interimChangeID: "2-1", interimChangeDate: date2, emergencyProcedures: epArray2, categories: ["warning", "caution", "advisory", "flight", "ground"])
+        let aircraft2 = Aircraft(tmsID: "UH1Y", tmsName: "UH-1Y Huey", aircraftIconImageName: "", interimChangeID: "2-1", interimChangeDate: date2, categories: ["warning", "caution", "advisory", "flight", "ground"],emergencyProcedures: epArray2)
+
         
-        //****************************************************************************************************************************************************************
         let step5a = ProcedureStep(type: .memory, step: "1. Do something")
         let step5b = ProcedureStep(type: .memory, step: "2. Do something more")
         let step5c = ProcedureStep(type: .memory, step: "3. Do something else")
-        let step5d = ProcedureStep(type: .memory, step: "4. Do something ok")
+        let step5d = ProcedureStep(type: .memory, step: "4. Drogue applies here")
         
         let steps5 = [step5a, step5b, step5c, step5d]
         
-        let step6a = ProcedureStep(type: .memory, step: "1. Do something")
+        let step6a = ProcedureStep(type: .memory, step: "1. This is electrical fail")
         let step6b = ProcedureStep(type: .memory, step: "2. Do something more")
         let step6c = ProcedureStep(type: .memory, step: "3. Do something else")
         let step6d = ProcedureStep(type: .memory, step: "4. Do something yankeeish")
@@ -104,11 +146,11 @@ class AircraftController {
         let epArray3 = [ep5, ep6, ep7, ep8, ep9, ep10, ep11, ep12, ep13, ep14, ep15, ep16, ep17, ep18, ep19]
         
         let date3 = Date()
-        let aircraft3 = Aircraft(tmsID: "T6B", tmsName: "T-6B Texan", aircraftIconImageName: "", interimChangeID: "4-1", interimChangeDate: date3, emergencyProcedures: epArray3, categories: ["hydraulic", "electric", "fuel", "o2", "engine", "takeoff", "general"])
+        let aircraft3 = Aircraft(tmsID: "T6B", tmsName: "T-6B Texan", aircraftIconImageName: "", interimChangeID: "4-1", interimChangeDate: date3, categories: ["hydraulic", "electric", "fuel", "o2", "engine", "takeoff", "general"], emergencyProcedures: epArray3)
         
         
         allAircraft.append(aircraft1)
         allAircraft.append(aircraft2)
         allAircraft.append(aircraft3)
-    }
-}
+        */
+

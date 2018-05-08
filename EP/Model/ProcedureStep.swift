@@ -1,16 +1,10 @@
 //  ProcedureStep.swift
 
-import Foundation
-class ProcedureStep  {
-    //MARK: properties
+import UIKit
+struct ProcedureStep: Decodable  {
     let type: StepType
     let step: String
-    enum StepType {
-        case memory, nonMemory, logic, warning, caution, advisory, note
-    }
-    //MARK: intitialization
-    init(type: StepType, step: String) {
-        self.type = type
-        self.step = step
+    enum StepType: String, Decodable {
+        case memory, nonMemory, memoryBold, logic, warning, caution, advisory, note, general, list
     }
 }

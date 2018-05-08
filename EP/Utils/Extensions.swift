@@ -10,6 +10,28 @@ extension UIColor {
     static func epComplement() -> UIColor {
         return UIColor(red: 132.0/255.0, green: 130.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
+    static func buttonDisabled() -> UIColor {
+        return UIColor(red: 132.0/255.0, green: 130.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+    }
+    static func buttonEnabled() -> UIColor {
+        return UIColor(red: 132.0/255.0, green: 130.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+    }
+    
+    
+    static func mainSchemeColor1() -> UIColor {
+        return UIColor(red: 255.0/255.0, green: 255.0/255.0, blue: 162.0/255.0, alpha: 1.0)
+    }
+    static func mainSchemeColor2() -> UIColor {
+        return UIColor(red: 106.0/255.0, green: 106.0/255.0, blue: 11.0/255.0, alpha: 1.0)
+    }
+    static func mainSchemeColor3() -> UIColor {
+        return UIColor(red: 18.0/255.0, green: 18.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+    }
+    static func textFieldColor() -> UIColor {
+        return UIColor.white
+    }
+    
+    
 }
 
 
