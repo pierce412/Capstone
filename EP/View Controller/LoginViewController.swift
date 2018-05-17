@@ -102,6 +102,7 @@ class LoginViewController: UIViewController {
     @objc fileprivate func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { print("Form is not valid"); return }
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            //have to do if let error = (error as NSError?).userInfo[error_name]
             if error != nil {
                 let ac = UIAlertController(title: "Sorry!", message: error?.localizedDescription, preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: nil)

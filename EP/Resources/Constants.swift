@@ -1,10 +1,5 @@
-//
 //  Constants.swift
-//  EP
-//
-//  Created by Ray Jex on 4/27/18.
-//  Copyright © 2018 verticalendgame. All rights reserved.
-//
+
 
 import Foundation
 
@@ -25,5 +20,24 @@ struct Constants {
     static let engine: String = "engine"
     static let takeoff: String = "takeoff"
     static let general: String = "general"
+    
+    //cell IDs
+    static let MemoryCell: String = "MemoryCell"
+    static let NonMemoryCell: String = "NonMemoryCell"
+    static let MemoryBoldCell: String = "MemoryBoldCell"
+    static let LogicCell: String = "LogicCell"
+    static let WarningCell: String = "WarningCell"
+    static let CautionCell: String = "CautionCell"
+    static let AdvisoryCell: String = "AdvisoryCell"
+    static let NoteCell: String = "NoteCell"
+    static let GeneralCell: String = "GeneralCell"
+    static let ListCell: String = "ListCell"
+    static let TitleCell: String = "TitleCell"
+    static let WarningHeaderCell: String = "WarningHeaderCell"
+    static let CautionHeaderCell: String = "CautionHeaderCell"
+    static let NoteHeaderCell: String = "NoteHeaderCell"
+    
+    static let AircraftCell: String = "AircraftCell"
+    static let EPCell: String = "EPCell"
     
 }

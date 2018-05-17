@@ -6,3 +6,4 @@ struct EmergencyProcedure: Decodable{
     let category: String
     let steps: [ProcedureStep]
 }
+

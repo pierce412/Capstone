@@ -5,6 +5,7 @@ struct ProcedureStep: Decodable  {
     let type: StepType
     let step: String
     enum StepType: String, Decodable {
-        case memory, nonMemory, memoryBold, logic, warning, caution, advisory, note, general, list
+        
+        case memory, nonMemory, memoryBold, logic, warning, caution, advisory, note, general, list, title, headerWarning, headerCaution, headerNote
     }
 }

@@ -8,10 +8,14 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //*************VIEWS***************************************
     let searchBar: UISearchBar = {
         let view = UISearchBar()
+        view.barTintColor = UIColor.epYellow()
+        view.placeholder = "Search EPs"
         return view
     }()
     let tableView: UITableView = {
         let view = UITableView()
+        view.register(EPCell.self, forCellReuseIdentifier: Constants.EPCell)
+        view.rowHeight = 50
         return view
     }()
     var segControl: UISegmentedControl = {
@@ -29,20 +33,22 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         if let ac = ac {
             arr = AircraftController.shared.configureAircraftForDisplay(aircraft: ac)
-            //print("Here be 2D arrrrr")
-            //print(arr)
-            self.title = "EP List"
+            self.title = "Emergency Procedures"
             segControl = createSegControl()
             segControl.addTarget(self, action: #selector(segValueChanged), for: .valueChanged)
             segControl.selectedSegmentIndex = 0
             setupEpListTableView()
             setupViews()
+            self.navigationController?.navigationBar.prefersLargeTitles = true
         }
-        //print("There are \(ac?.emergencyProcedures.count) EPs from \(ac?.tmsID)")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationItem.title = ""
     }
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        //tableView.reloadData()
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "EP"
     }
     //MARK: SegmentedControl Method
     @objc func segValueChanged() {
@@ -51,22 +57,18 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     //MARK: - TableView Methods
     fileprivate func setupEpListTableView() {
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "EPCell")
         tableView.delegate = self
         tableView.dataSource = self
-        self.view.addSubview(tableView)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //returns the num rows in selected section (segmentedControl)
-        //print("Is this changing: \(arr[segControl.selectedSegmentIndex].count)")
         return arr[segControl.selectedSegmentIndex].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EPCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.EPCell, for: indexPath) as! EPCell
         let ep = arr[segControl.selectedSegmentIndex][indexPath.row]
-        cell.textLabel?.text = ep.title
+        cell.epName = ep.title
+        cell.layoutSubviews()
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -91,7 +93,7 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         let segToReturn = UISegmentedControl(items: items)
-        segToReturn.backgroundColor = UIColor.mainSchemeColor2()
+        segToReturn.backgroundColor = UIColor.white
         return segToReturn
     }
     //MARK: - Constraints
@@ -107,6 +109,7 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         setupSegmentedControlConstraints()
     }
     fileprivate func setContainerConstrains(){
+        
         container.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,

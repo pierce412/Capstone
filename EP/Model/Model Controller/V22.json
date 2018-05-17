@@ -1,0 +1,431 @@
+{  "tmsID": "MV22",
+    "tmsName":"MV-22B/C Osprey",
+    "aircraftIconImageName": "",
+    "interimChangeID": "86",
+    "categories": ["warning","caution","advisory","flight","ground"],
+    "interimChangeDate": "2018-04-18",
+    "emergencyProcedures" : [ {
+                             "category" : "warning",
+                             "shortName" : "fireEngineGround",
+                             "steps" : [{"step" : "Bleed air or other hot gas leakage may trigger an engine fire warning without associated secondary indications.","type" : "note"},
+                                        {"step" : "*1. ECLs — OFF.","type" : "memoryBold"},
+                                        {"step" : "*2. T-handle (affected engine) — ARM.","type" : "memoryBold"},
+                                        {"step" : "If fire persists:","type" : "logic"},
+                                        {"step" : "*3. DISCHARGE button — Press.","type" : "memoryBold"},
+                                        {"step" : "*4. Emergency Shutdown — Execute.","type" : "memoryBold"}
+                                        ],
+                             "title" : "FIRE, Engine, On Ground"
+                             },
+                             {
+                             "category" : "warning",
+                             "shortName" : "fireEngineInFlight",
+                             "steps" : [{"step" : "Bleed air or other hot gas leakage may trigger an engine fire warning without associated secondary indications.","type" : "note"},
+                                        {"step" : "Bleed air or other hot gas leakage may trigger an engine fire warning without associated secondary indications. Expect affected engine to be low power. Cockpit secondary indications may include increased fuel flow and elevated MGT with low engine torque.","type" : "note"},
+                                        {"step" : "*1. Single engine profile — Establish.","type" : "memoryBold"},
+                                        {"step" : "If fire confirmed:","type" : "logic"},
+                                        {"step" : "*2. ECL (affected engine) — OFF.","type" : "memoryBold"},
+                                        {"step" : "*3. T-handle (affected engine) — ARM.","type" : "memoryBold"},
+                                        {"step" : "If fire persists:","type" : "logic"},
+                                        {"step" : "*4. DISCHARGE button — Press.","type" : "memoryBold"},
+                                        {"step" : "If fire persists:","type" : "logic"},
+                                        {"step" : "*5. Land immediately.","type" : "memoryBold"},
+                                        {"step" : "If fire is extinguished:","type" : "logic"},
+                                        {"step" : "6. ENG, Single, In Flight — Execute.","type" : "nonMemory"}
+                                        
+                                       
+                                        ],
+                             "title" : "FIRE, Engine, In Flight"
+                             },
+                             {
+                             "category" : "warning",
+                             "shortName" : "fireWingInFlight",
+                             "steps" : [
+                                        {"step" : "A sustained MFD FIRE annunciation is an indication of a persistent fire. The FIRE SUPPRESSION panel indicator light(s) may or may not provide positive indication of a sustained fire.","type" : "note"},
+                                        {"step" : "*1. TPUMP BOOST — VERIFIED OFF.","type" : "memoryBold"},
+                                        {"step" : "If fire persists:","type" : "logic"},
+                                        {"step" : "*2. Land immediately.","type" : "memoryBold"},
+                                        {"step" : "If fire is extinguished:","type" : "logic"},
+                                        {"step" : "3. Land as soon as possible.","type" : "nonMemory"}
+
+                                        ],
+                             "title" : "FIRE, Wing, In Flight"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "fireWingOnGround",
+                             "steps" : [
+                                        {"step" : "*1. Emergency Shutdown — Execute.","type" : "memoryBold"}
+                                        ],
+                             "title" : "FIRE, Wing, On Ground"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "engDualNacGreater60",
+                             "steps" : [
+                                        {"step" : "Dual engine loss in CONV will result in a rapid Nr decay. If Nr decay is not arrested rapidly, autorotation is not recoverable.","type" : "warning"},
+                                        {"step" : "Simultaneously (first 4):","type" : "logic"},
+                                        {"step" : "*1. TCL — Full aft.","type" : "memoryBold"},
+                                        {"step" : "*2. Nacelles — Max rate to aft stop.","type" : "memoryBold"},
+                                        {"step" : "*3. Airspeed — 120 KCAS.","type" : "memoryBold"},
+                                        {"step" : "*4. FLAPS — 0°.","type" : "memoryBold"},
+                                        {"step" : "*5. APU — EMERG RUN/ENGAGE.","type" : "memoryBold"},
+                                        {"step" : "*6. Landing gear — Down.","type" : "memoryBold"},
+                                        {"step" : "At 150 ft AGL:","type" : "logic"},
+                                        {"step" : "*7. Cyclic — Flare, level prior to impact.","type" : "memoryBold"},
+                                        {"step" : "*8. TCL — Full forward.","type" : "memoryBold"}
+                                        ],
+                             "title" : "ENG, Dual, NAC >= 60 deg"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "engDualNacLess60",
+                             "steps" : [
+                                        {"step" : "*1. TCL — Full aft.","type" : "memoryBold"},
+                                        {"step" : "*2. Nacelles — Max rate to downstop, then 84% Nr.","type" : "memoryBold"},
+                                        {"step" : "*3. Airspeed — 170 KCAS.","type" : "memoryBold"},
+                                        {"step" : "*4. FLAPS — AUTO.","type" : "memoryBold"},
+                                        {"step" : "*5. APU — EMERG RUN/ENGAGE.","type" : "memoryBold"},
+                                        {"step" : "*6. ELP — Intercept.","type" : "memoryBold"},
+                                        {"step" : "After configuring for glide, attempt engine restart if conditions permit.","type" : "note"},
+                                        {"step" : "*7. Landing gear — EMERG DOWN (as required) (allow 20 seconds for extension).","type" : "memoryBold"},
+                                        {"step" : "Extension of landing gear is recommended only if assured of landing on a prepared surface. Landing with gear extended on an unprepared surface may result in loss of aircraft control.","type" : "warning"},
+                                        {"step" : "Expect 200 to 600 fpm increase in rate of descent with landing gear extended.","type" : "note"},
+                                        {"step" : "At approximately 400 — 200 ft AGL:","type" : "logic"},
+                                        {"step" : "*8. Mild Flare — EXECUTE, holding 8°-10° nose up. Expect airspeed to decay to 120-115 KCAS on touchdown.","type" : "memoryBold"},
+                                        {"step" : "Flaps FULL can be used on short final to slightly extend the flare.","type" : "note"}
+                                        
+                                        ],
+                             "title" : "ENG, Dual, NAC < 60 deg"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "engSingleHover",
+                             "steps" : [
+                                        {"step" : "*1. TCL — Full forward.","type" : "memoryBold"},
+                                        {"step" : "*2. Cyclic — Level attitude prior to touchdown.","type" : "memoryBold"},
+                                        {"step" : "Aft stick control margin significantly decreases as nacelles are rotated towards 70 degrees. Consideration should be given to adjusting the nacelles aft prior to touchdown in order to achieve normal landing attitude.","type" : "caution"},
+                                        {"step" : "If a flyaway is to be attempted:","type" : "logic"},
+                                        {"step" : "*3. ENG, Single, In Flight — Execute.","type" : "memoryBold"},
+                                        {"step" : "Aircraft vertical velocity is sensitive to nacelle beep rate. During climb out, ensure beep rate is slow enough to not induce an uncommanded sink rate.","type" : "note"}
+                                       
+                                        ],
+                             "title" : "ENG, Single, Hover"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "engSingleFlight",
+                             "steps" : [
+                                        {"step" : "*1. TCL — Full forward.","type" : "memoryBold"},
+                                        {"step" : "*2. Single engine profile — Establish.","type" : "memoryBold"},
+                                        {"step" : "If level flight cannot be established:","type" : "logic"},
+                                        {"step" : "3. Land as soon as possible (ROL recommended).","type" : "nonMemory"},
+                                        {"step" : "Time permitting, dumping fuel (800 lbs/minute) or getting rid of cargo should be considered to reduce weight. Fuel dump will cause a large amount of fuel to be spread over the empennage and aft cabin.","type" : "note"},
+                                        {"step" : "If climbing flight can be established:","type" : "logic"},
+                                        {"step" : "4. APLN — Transition.","type" : "nonMemory"},
+                                        {"step" : "5. ECL (affected engine) — OFF.","type" : "nonMemory"},
+                                        {"step" : "Within one minute of the engine shutting off, the appropriate ECL should be placed in CRANK to prevent thermal lock-up and then to OFF to reset the start logic.","type" : "note"},
+                                        {"step" : "If engine restart is to be attempted:","type" : "logic"},
+                                        {"step" : "6. Engine Restart In Flight — Execute.","type" : "nonMemory"},
+                                        {"step" : "7. TPUMP BOOST — ON.","type" : "nonMemory"},
+                                        {"step" : "8. XFER VALVE — OPEN.","type" : "nonMemory"},
+                                        {"step" : "9. Land as soon as possible. (ROL recommended).","type" : "nonMemory"},
+                                        {"step" : "If there is a risk of losing the remaining engine, intercept and fly the Emergency Landing Profile. Consideration should be given to starting the APU.","type" : "caution"},
+                                        {"step" : "If it is desired to restart the affected engine on the ground, ECL of running engine must first be pulled out of FLY to reset TCRS and prevent transients. Return running engine to FLY prior to second engine start.","type" : "note"}
+                                        
+                                        
+                                        ],
+                             "title" : "ENG, Single, Flight"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "elev",
+                             "steps" : [
+                                        {"step" : "If the elevator fails trailing edge down, unrecoverable loss of longitudinal control may occur above 40 KCAS with nacelles less than 85°.","type" : "warning"},
+                                        {"step" : "*1. Cyclic — Roll toward 60° AOB.","type" : "memoryBold"},
+                                        {"step" : "*2. VTOL — Convert.","type" : "memoryBold"},
+                                        {"step" : "3. PFCS — RESET.","type" : "nonMemory"},
+                                        {"step" : "4. Land as soon as practical.","type" : "nonMemory"}
+                                        ],
+                             "title" : "ELEV"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "icds",
+                             "steps" : [
+                                        {"step" : "Single engine with an ICDS failure is unrecoverable below 170 to 175 KCAS.","type" : "warning"},
+                                        {"step" : "Flapping controller is lost. Extended operations between 10° and 75° nacelle should be avoided due to heat buildup and possible elastomeric bearing failure. Transition/convert according to the following to minimize potential for damage.","type" : "caution"},
+                                        {"step" : "NAC (KCAS)","type" : "general"},
+                                        {"step" : "0deg (180)","type" : "list"},
+                                        {"step" : "30deg (150)","type" : "list"},
+                                        {"step" : "60deg (100)","type" : "list"},
+                                        {"step" : "The ICDS Failure warning will post in the event of a triple Nr sensor failure on one side.","type" : "list"},
+                                        {"step" : "Average rotor speed will increase to 104% ≥60° nacelle to preserve lateral control authority.","type" : "list"},
+                                        {"step" : "Interim Power must still be selected to access higher mast torque levels within the normal Interim Power envelope.","type" : "list"},
+                                        {"step" : "Consideration should be given to reducing gross weight and DA.","type" : "list"},
+                                        {"step" : "*1. M.A. — Execute.","type" : "memoryBold"},
+                                        {"step" : "2. Interim Power — As required.","type" : "nonMemory"},
+                                        {"step" : "3. Land as soon as possible (ROL recommended).","type" : "nonMemory"},
+                                        {"step" : "If continued flight is required:","type" : "logic"},
+                                        {"step" : "4. APLN — Transition (100% Nr).","type" : "nonMemory"},
+                                        {"step" : "If high vibration levels are present:","type" : "logic"},
+                                        {"step" : "5. Nacelles — 10°.","type" : "nonMemory"},
+                                        {"step" : "Once on the ground:","type" : "logic"},
+                                        {"step" : "6. Emergency Shutdown — Execute (simultaneous — no rotor brake).","type" : "nonMemory"}
+                                        ],
+                             "title" : "ICDS"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "prgbOrTagb",
+                             "steps" : [
+                                        {"step" : "If secondary indications confirm impending gearbox failure:","type" : "logic"},
+                                        {"step" : "*1. Land immediately.","type" : "memoryBold"},
+                                        {"step" : "If no secondary indications exist:","type" : "logic"},
+                                        {"step" : "2. Land as soon as possible.","type" : "nonMemory"}
+                                        
+                                        ],
+                             "title" : "PRGB or TAGB"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "rpmLow",
+                             "steps" : [
+                                        {"step" : "If a sustained RPM LOW condition is indicated, the crew should respond with slow control inputs and monitor Qm as there may be insufficient power to maintain Nr resulting in a severely degraded condition.","type" : "warning"},
+                                        {"step" : "If condition persists:","type" : "logic"},
+                                        {"step" : "1. Land as soon as possible.","type" : "nonMemory"}
+                                        
+                                        
+                                        ],
+                             "title" : "RPM LOW"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "loAlt",
+                             "steps" : [
+                                        {"step" : "Current terrain conditions must be evaluated to determine the appropriate response. If aircraft clearance over the surrounding terrain can be verified, the approach may continue. If aircraft clearance over the surrounding terrain cannot be visually verified, the APPR glideslope must be discontinued and appropriate action shall be executed.","type" : "general"}
+                                        ],
+                             "title" : "LO ALT"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "sink",
+                             "steps" : [
+                                        {"step" : "If VRS is suspected:","type" : "logic"},
+                                        {"step" : "*1. Nacelles — Beep forward (max rate for 2 sec/<15°).","type" : "memoryBold"},
+                                        {"step" : "*2. Cyclic — Forward to accelerate.","type" : "memoryBold"},
+                                        {"step" : "*3. TCL — Fixed (alt permitting).","type" : "memoryBold"},
+                                        {"step" : "TCL power application within VRS may cause uncontrollable roll.","type" : "caution"}
+                                        ],
+                             "title" : "SINK"
+                             },
+                             
+                             {
+                             "category" : "warning",
+                             "shortName" : "stall",
+                             "steps" : [
+                                        {"step" : "*1. Maneuver Severity — Reduce to decrease angle of attack and load factor.","type" : "memoryBold"},
+                                        {"step" : "*2. TCL — Forward.","type" : "memoryBold"},
+                                        {"step" : "unable to complete steps 1. and 2.:","type" : "logic"},
+                                        {"step" : "*3. CONV — Convert, max rate.","type" : "memoryBold"},
+                                        {"step" : "*4. TCL — As required.","type" : "memoryBold"}
+                                        
+                                        ],
+                             "title" : "STALL"
+                             },
+                             //********************* CAUTIONS
+                             {
+                             "category" : "caution",
+                             "shortName" : "abiuFailOrAbiuFault",
+                             "steps" : [
+                                        {"step" : "1. Affected equipment — EVALUATE.","type" : "nonMemory"},
+                                        {"step" : "If GENERATOR 1 FAIL or GENERATOR 1 and 2 FAIL posts at the same time as ABIU FAIL/FAULT:","type" : "logic"},
+                                        {"step" : "2. Cycle ABIU DC and AC circuit breakers.","type" : "nonMemory"},
+                                        {"step" : "If in icing conditions:","type" : "logic"},
+                                        {"step" : "3. Icing conditions — Exit","type" : "nonMemory"},
+                                        {"step" : "If caution fails to clear:","type" : "logic"},
+                                        {"step" : "4. Land as soon as practical.","type" : "nonMemory"}
+                                        
+                                        
+                                        ],
+                             "title" : "ABIU FAIL OR FAULT"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "acBusXFail",
+                             "steps" : [
+                                        {"step" : "1. Icing environment — Exit.","type" : "nonMemory"},
+                                        {"step" : "2. BUS EQUIP layer — Evaluate.","type" : "nonMemory"},
+                                        {"step" : "3. Land as soon as practical.","type" : "nonMemory"}
+                                        ],
+                             "title" : "AC BUS X FAIL (1, 2)"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "adsXYZFail",
+                             "steps" : [
+                                        {"step" : "If extended flight is required with a dual ADS failure, normal handling qualities can be reestablished by transitioning to APLN and pressing the PFCS RESET. AFCS Failed OFF will reoccur when the nacelles are raised off the downstops.","type" : "general"},
+                                        {"step" : "Auto flap setting and the maximum flap extension to prevent structural damage will be a function of nacelle angle. Autobeeping to 84% Nr will reduce auto flap setting to 10°. 0° flap can be set manually.","type" : "general"},
+                                        {"step" : "Interim power is still available, but is solely dependent on nacelle angle. At airspeeds greater than 60 KCAS potential to exceed design limit load exists with interim power engaged.","type" : "caution"},
+                                        {"step" : "CAUTION may post at low altitude under high barometric pressure conditions. This may result in loss of coupled modes and some vertical damping.\n Handling characteristics improve at lower altitudes and 170-200 KCAS.\nWith triple ADS failure, regardless of configuration, expect SLL, AFCS, and force feel failures.\nA dual ADS failure in APLN will result in posting of the AFCS DISENGAGE caution. The AFCS is still functional due to the use of the mach monitor to validate the remaining functional ADS. Handling qualities should be normal until conversion is conducted, which causes AFCS, SLL, and force feel failures.","type" : "note"},
+                                         {"step" : "1. M.A.P. — Execute.","type" : "nonMemory"},
+                                         {"step" : "If caution fails to clear:","type" : "logic"},
+                                        {"step" : "2. Land as soon as practical (ROL recommended).","type" : "nonMemory"}
+                                       
+                                        ],
+                             "title" : "ADS X/Y/Z FAIL or ADS X/Y FAIL (1/2/3, 1/2, 1/3, 2/3)"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "adsAoaIpsFail",
+                             "steps" : [
+                                        {"step" : "Icing of the pitot static probes could lead to ADS failures. ADS X/Y FAIL in CONV mode or ADS X/Y/Z FAIL in APLN mode will result in significantly degraded handling qualities. Above 190 KCAS and/or 10,000 ft MSL, handling qualities will become progressively worse.","type" : "caution"},
+                                        {"step" : "1. Icing conditions — Exit.","type" : "nonMemory"}
+                                        ],
+                             "title" : "ADS/AOA IPS FAIL"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "adsAoaHeatFailOn",
+                             "steps" : [
+                                        {"step" : "Continuous Pitot/AOA heating can result in high temperatures and injury to ground personnel.","type" : "warning"},
+                                        {"step" : "When WOW, pull Pitot/AOA circuit breakers.","type" : "general"}
+                                      
+                                        ],
+                             "title" : "ADS/AOA HEAT FAIL ON"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "afcsDisengage",
+                             "steps" : [
+                                        {"step" : "1. M.P. — Execute.","type" : "nonMemory"},
+                                        {"step" : "If INS X/Y FAIL is posted, PFCS FAIL RESET may result in the loss of navigation display.","type" : "note"},
+                                        {"step" : "If caution fails to clear:","type" : "logic"},
+                                        {"step" : "2. Airspeed — Reduce below 200 KCAS.","type" : "nonMemory"},
+                                        {"step" : "3. Land as soon as practical (ROL recommended).","type" : "nonMemory"}
+                                        
+                                        ],
+                             "title" : "AFCS DISENGAGE"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "airspeedLimit",
+                             "steps" : [
+                                        {"step" : "1. Airspeed — Reduce.","type" : "nonMemory"}
+                                        ],
+                             "title" : "AIRSPEED LIMIT"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "apr39Fail",
+                             "steps" : [
+                                        {"step" : "1. APR-39 — Verify ON.","type" : "nonMemory"}
+                                        ],
+                             "title" : "APR-39 FAIL"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "attXYZFail",
+                             "steps" : [
+                                        {"step" : "MFD attitude information may be erroneous, consider using standby flight instruments.\nPilot workload will increase due to loss of rate stability provided by gyros.","type" : "note"},
+                                        {"step" : "1. NAV ALIGN — Verify in progress or select INS for manual alignment.","type" : "nonMemory"},
+                                        {"step" : "2. PFCS — RESET (after successful alignment).","type" : "nonMemory"},
+                                        {"step" : "If GPS NAV alignment fails:","type" : "logic"},
+                                        {"step" : "3. Failed INS(s) — Cycle Off/On.","type" : "nonMemory"},
+                                        {"step" : "4. PFCS — RESET (after successful alignment).","type" : "nonMemory"},
+                                        {"step" : "If INS alignment fails:","type" : "logic"},
+                                        {"step" : "5. Land as soon as practical.","type" : "nonMemory"}
+                                        ],
+                             "title" : "ATT X/Y/Z FAIL or ATT X/Y FAIL (1/2/3, 1/2, 1/3, 2/3)"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "autoJettNotActive",
+                             "steps" : [
+                                        {"step" : "Emergency release of external loads under tension may result in “snap back” of the pendant or load rigging that may damage aircraft or injure aircrew observers.\nRelease of one hook from a dual point load without automatic jettison protection could result in structural damage and/or loss of aircraft control.","type" : "warning"},
+                                        {"step" : "1. AUTO JETT — Select.","type" : "nonMemory"},
+                                        {"step" : "If caution does not clear:","type" : "logic"},
+                                        {"step" : "2. Airspeed — <100 KCAS.","type" : "nonMemory"},
+                                        {"step" : "3. Load — Set down.","type" : "nonMemory"},
+                                        {"step" : "4. Hooks — Manually release.","type" : "nonMemory"}
+                                        ],
+                             "title" : "AUTO JETT NOT ACTIVE"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "aviBayHot",
+                             "steps" : [
+                                        {"step" : "Avionics bay over temperature can result in loss of critical avionics subsystems.","type" : "caution"},
+                                        {"step" : "On extremely hot days (OAT 45 °C), AVIONICS BAY HOT caution may be observed. Caution may clear with aircraft movement.\nAPLN below 200 KCAS and at lower altitudes provides better avionics cooling.","type" : "note"},
+                                         {"step" : "1. APLN — Transition.","type" : "nonMemory"},
+                                         {"step" : "If caution does not clear:","type" : "logic"},
+                                         {"step" : "2. Land as soon as practical.","type" : "nonMemory"}
+                                        ],
+                             "title" : "AVIONICS BAY HOT"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "bfwsNotFltReady",
+                             "steps" : [
+                                        {"step" : "One or more of the wing lockpins may not be fully extended.","type" : "note"},
+                                        {"step" : "1. Maneuver Severity — Reduce.","type" : "nonMemory"},
+                                        {"step" : "2. Land as soon as possible.","type" : "nonMemory"}
+                                        ],
+                             "title" : "BFWS NOT FLIGHT RDY"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "bingoFuelDirect",
+                             "steps" : [
+                                        {"step" : "No Flight Plan Bingo Fuel required is greater than the aircraft Total Fuel minus the No Flight Plan Bingo Fuel Reserve.","type" : "general"}
+                                        ],
+                             "title" : "BINGO FUEL DIRECT"
+                             },
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "bingoFuelFpln",
+                             "steps" : [
+                                        {"step" : "Flight Plan Bingo Fuel required is greater than the aircraft Total Fuel minus the Flight Plan Bingo Fuel Reserve.","type" : "general"}
+                                        ],
+                             "title" : "BINGO FUEL FPLN"
+                             },
+                             //**** HERE 
+                             
+                             {
+                             "category" : "caution",
+                             "shortName" : "",
+                             "steps" : [
+                                        {"step" : "","type" : "nonMemory"}
+                                        ],
+                             "title" : ""
+                             },
+                             
+                             
+                             
+                             
+                             
+                             ]}
+

@@ -19,11 +19,29 @@
 		3B69A6AB209230FF000F0243 /* AddAircraftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6AA209230FF000F0243 /* AddAircraftViewController.swift */; };
 		3B69A6B1209249B4000F0243 /* EmergencyProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B69A6B0209249B4000F0243 /* EmergencyProcedureViewController.swift */; };
 		3B9C4B5920939ACB00506A33 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9C4B5820939ACB00506A33 /* Constants.swift */; };
+		3BBCA94820A5F513003399CC /* MemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA94720A5F513003399CC /* MemoryCell.swift */; };
+		3BBCA94A20A61191003399CC /* LogicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA94920A61191003399CC /* LogicCell.swift */; };
+		3BBCA94C20A613BA003399CC /* MemoryBoldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA94B20A613BA003399CC /* MemoryBoldCell.swift */; };
+		3BBCA95020A636AA003399CC /* WarningCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA94F20A636AA003399CC /* WarningCell.swift */; };
+		3BBCA95220A6381F003399CC /* CautionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA95120A6381F003399CC /* CautionCell.swift */; };
+		3BBCA95420A638F7003399CC /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA95320A638F7003399CC /* NoteCell.swift */; };
+		3BBCA95620A639F6003399CC /* AdvisoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA95520A639F6003399CC /* AdvisoryCell.swift */; };
+		3BBCA95820A63BC6003399CC /* GeneralCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA95720A63BC6003399CC /* GeneralCell.swift */; };
+		3BBCA95A20A63C6A003399CC /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA95920A63C6A003399CC /* ListCell.swift */; };
+		3BBCA95C20A63D4C003399CC /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA95B20A63D4C003399CC /* TitleCell.swift */; };
+		3BBCA95E20A63F99003399CC /* EPCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA95D20A63F99003399CC /* EPCell.swift */; };
+		3BBCA96020A643B5003399CC /* AircraftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BBCA95F20A643B5003399CC /* AircraftCell.swift */; };
 		3BC0F0C6208E326B00E20519 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0F0C5208E326B00E20519 /* AppDelegate.swift */; };
 		3BC0F0C8208E326B00E20519 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC0F0C7208E326B00E20519 /* LoginViewController.swift */; };
 		3BC0F0CD208E326C00E20519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0F0CC208E326C00E20519 /* Assets.xcassets */; };
 		3BC0F0D0208E326C00E20519 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BC0F0CE208E326C00E20519 /* LaunchScreen.storyboard */; };
+		3BD3DA9620A8C81900C307EE /* WarningHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3DA9520A8C81900C307EE /* WarningHeaderCell.swift */; };
+		3BD3DAC320A924BA00C307EE /* CautionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3DAC220A924BA00C307EE /* CautionHeaderCell.swift */; };
+		3BD3DAC520A924C400C307EE /* NoteHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BD3DAC420A924C400C307EE /* NoteHeaderCell.swift */; };
 		3BE25A4C2092D8F40072AEA1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BE25A4B2092D8F40072AEA1 /* GoogleService-Info.plist */; };
+		3BF50B5E20A27E8700C3444C /* master.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BF50B5D20A27E8700C3444C /* master.json */; };
+		3BF50B6020A3181500C3444C /* V22.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BF50B5F20A3181500C3444C /* V22.json */; };
+		3BF50B6620A4D8DF00C3444C /* NonMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF50B6520A4D8DF00C3444C /* NonMemoryCell.swift */; };
 		6260D016AE3430BED3FD623C /* Pods_EP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A16E03564E218925B886A6B /* Pods_EP.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,13 +61,31 @@
 		3B69A6AA209230FF000F0243 /* AddAircraftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAircraftViewController.swift; sourceTree = "<group>"; };
 		3B69A6B0209249B4000F0243 /* EmergencyProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyProcedureViewController.swift; sourceTree = "<group>"; };
 		3B9C4B5820939ACB00506A33 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3BBCA94720A5F513003399CC /* MemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCell.swift; sourceTree = "<group>"; };
+		3BBCA94920A61191003399CC /* LogicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogicCell.swift; sourceTree = "<group>"; };
+		3BBCA94B20A613BA003399CC /* MemoryBoldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryBoldCell.swift; sourceTree = "<group>"; };
+		3BBCA94F20A636AA003399CC /* WarningCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningCell.swift; sourceTree = "<group>"; };
+		3BBCA95120A6381F003399CC /* CautionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CautionCell.swift; sourceTree = "<group>"; };
+		3BBCA95320A638F7003399CC /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		3BBCA95520A639F6003399CC /* AdvisoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvisoryCell.swift; sourceTree = "<group>"; };
+		3BBCA95720A63BC6003399CC /* GeneralCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCell.swift; sourceTree = "<group>"; };
+		3BBCA95920A63C6A003399CC /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		3BBCA95B20A63D4C003399CC /* TitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		3BBCA95D20A63F99003399CC /* EPCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPCell.swift; sourceTree = "<group>"; };
+		3BBCA95F20A643B5003399CC /* AircraftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftCell.swift; sourceTree = "<group>"; };
 		3BC0F0C2208E326B00E20519 /* EP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BC0F0C5208E326B00E20519 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3BC0F0C7208E326B00E20519 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3BC0F0CC208E326C00E20519 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BC0F0CF208E326C00E20519 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3BC0F0D1208E326C00E20519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BD3DA9520A8C81900C307EE /* WarningHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningHeaderCell.swift; sourceTree = "<group>"; };
+		3BD3DAC220A924BA00C307EE /* CautionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CautionHeaderCell.swift; sourceTree = "<group>"; };
+		3BD3DAC420A924C400C307EE /* NoteHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHeaderCell.swift; sourceTree = "<group>"; };
 		3BE25A4B2092D8F40072AEA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3BF50B5D20A27E8700C3444C /* master.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = master.json; sourceTree = "<group>"; };
+		3BF50B5F20A3181500C3444C /* V22.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = V22.json; sourceTree = "<group>"; };
+		3BF50B6520A4D8DF00C3444C /* NonMemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonMemoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +114,8 @@
 			children = (
 				3BC0F0C5208E326B00E20519 /* AppDelegate.swift */,
 				3B0E8F7E209BC4C10063B3C8 /* t6.json */,
+				3BF50B5F20A3181500C3444C /* V22.json */,
+				3BF50B5D20A27E8700C3444C /* master.json */,
 				3B3210AC2093731200ADF36B /* AircraftController.swift */,
 			);
 			path = "Model Controller";
@@ -123,6 +161,7 @@
 				3B69A6AA209230FF000F0243 /* AddAircraftViewController.swift */,
 				3B04B64120926272001A3E9A /* EPListViewController.swift */,
 				3B69A6B0209249B4000F0243 /* EmergencyProcedureViewController.swift */,
+				3BC7B94020A4E12800BD04D7 /* View */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -154,6 +193,29 @@
 				3B4E7ABE2091619500ACA1EB /* Utils */,
 			);
 			path = EP;
+			sourceTree = "<group>";
+		};
+		3BC7B94020A4E12800BD04D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BF50B6520A4D8DF00C3444C /* NonMemoryCell.swift */,
+				3BBCA94720A5F513003399CC /* MemoryCell.swift */,
+				3BBCA94920A61191003399CC /* LogicCell.swift */,
+				3BBCA94B20A613BA003399CC /* MemoryBoldCell.swift */,
+				3BBCA94F20A636AA003399CC /* WarningCell.swift */,
+				3BBCA95120A6381F003399CC /* CautionCell.swift */,
+				3BBCA95320A638F7003399CC /* NoteCell.swift */,
+				3BBCA95520A639F6003399CC /* AdvisoryCell.swift */,
+				3BBCA95720A63BC6003399CC /* GeneralCell.swift */,
+				3BBCA95920A63C6A003399CC /* ListCell.swift */,
+				3BBCA95B20A63D4C003399CC /* TitleCell.swift */,
+				3BBCA95D20A63F99003399CC /* EPCell.swift */,
+				3BBCA95F20A643B5003399CC /* AircraftCell.swift */,
+				3BD3DA9520A8C81900C307EE /* WarningHeaderCell.swift */,
+				3BD3DAC220A924BA00C307EE /* CautionHeaderCell.swift */,
+				3BD3DAC420A924C400C307EE /* NoteHeaderCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8D9AEBEFACA22B6D7A49980E /* Frameworks */ = {
@@ -224,7 +286,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BF50B6020A3181500C3444C /* V22.json in Resources */,
 				3BC0F0D0208E326C00E20519 /* LaunchScreen.storyboard in Resources */,
+				3BF50B5E20A27E8700C3444C /* master.json in Resources */,
 				3B0E8F7F209BC4C10063B3C8 /* t6.json in Resources */,
 				3BC0F0CD208E326C00E20519 /* Assets.xcassets in Resources */,
 				3BE25A4C2092D8F40072AEA1 /* GoogleService-Info.plist in Resources */,
@@ -289,19 +353,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBCA95820A63BC6003399CC /* GeneralCell.swift in Sources */,
+				3BBCA95E20A63F99003399CC /* EPCell.swift in Sources */,
+				3BBCA95020A636AA003399CC /* WarningCell.swift in Sources */,
 				3BC0F0C8208E326B00E20519 /* LoginViewController.swift in Sources */,
+				3BBCA95220A6381F003399CC /* CautionCell.swift in Sources */,
 				3B4E7ABD2091619000ACA1EB /* Extensions.swift in Sources */,
 				3B69A6A4209227CA000F0243 /* EPUser.swift in Sources */,
 				3B69A6B1209249B4000F0243 /* EmergencyProcedureViewController.swift in Sources */,
+				3BD3DAC520A924C400C307EE /* NoteHeaderCell.swift in Sources */,
+				3BBCA94820A5F513003399CC /* MemoryCell.swift in Sources */,
+				3BBCA95420A638F7003399CC /* NoteCell.swift in Sources */,
 				3B4E7AC32091769C00ACA1EB /* ProcedureStep.swift in Sources */,
 				3B69A6A920922C91000F0243 /* AircraftListViewController.swift in Sources */,
 				3BC0F0C6208E326B00E20519 /* AppDelegate.swift in Sources */,
+				3BD3DA9620A8C81900C307EE /* WarningHeaderCell.swift in Sources */,
+				3BD3DAC320A924BA00C307EE /* CautionHeaderCell.swift in Sources */,
+				3BBCA95C20A63D4C003399CC /* TitleCell.swift in Sources */,
+				3BBCA94A20A61191003399CC /* LogicCell.swift in Sources */,
 				3B9C4B5920939ACB00506A33 /* Constants.swift in Sources */,
+				3BBCA95A20A63C6A003399CC /* ListCell.swift in Sources */,
+				3BF50B6620A4D8DF00C3444C /* NonMemoryCell.swift in Sources */,
 				3B04B64220926272001A3E9A /* EPListViewController.swift in Sources */,
 				3B4E7AC12091704900ACA1EB /* EmergencyProcedure.swift in Sources */,
 				3B69A6A22092228B000F0243 /* Aircraft.swift in Sources */,
+				3BBCA94C20A613BA003399CC /* MemoryBoldCell.swift in Sources */,
 				3B69A6AB209230FF000F0243 /* AddAircraftViewController.swift in Sources */,
 				3B3210AD2093731200ADF36B /* AircraftController.swift in Sources */,
+				3BBCA95620A639F6003399CC /* AdvisoryCell.swift in Sources */,
+				3BBCA96020A643B5003399CC /* AircraftCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
