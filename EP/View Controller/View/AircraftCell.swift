@@ -55,8 +55,10 @@ class AircraftCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         if let ac = ac {
+            print(ac.aircraftIconImageName)
             tmsImageView.image = UIImage(named: "default")
             acLabel.text = ac.tmsName
+            acLabel.textColor = UIColor.matteBlack()
             interimChangeLabel.text = ac.interimChangeID
             interimChangeDateLabel.text = ac.interimChangeDate
         }

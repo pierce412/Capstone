@@ -41,6 +41,7 @@ class EmergencyProcedureViewController: UIViewController, UITableViewDataSource,
         self.title = "EP"
         epTableView.estimatedRowHeight = 100
         epTableView.rowHeight = UITableViewAutomaticDimension
+        
     }
     //MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,27 +132,27 @@ class EmergencyProcedureViewController: UIViewController, UITableViewDataSource,
             cell.layoutSubviews()
             return cell
             
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.NonMemoryCell, for: indexPath) as! NonMemoryCell
-            cell.step = step.step
-            cell.layoutSubviews()
-            return cell
+//        default:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.NonMemoryCell, for: indexPath) as! NonMemoryCell
+//            cell.step = step.step
+//            cell.layoutSubviews()
+//            return cell
             
         }
         
     }
-    fileprivate func setupEpTableView() {
+    private func setupEpTableView() {
         epTableView.delegate = self
         epTableView.dataSource = self
     }
     // MARK: - Constraints
-    fileprivate func setupViews() {
+    private func setupViews() {
         view.addSubview(container)
         container.addSubview(epTableView)
         setContainerConstraints()
         setupTableViewConstraints()
     }
-    fileprivate func setContainerConstraints(){
+    private func setContainerConstraints(){
         container.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                          left: view.leftAnchor,
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
@@ -163,7 +164,7 @@ class EmergencyProcedureViewController: UIViewController, UITableViewDataSource,
                          width: 0, height: 0)
     }
     
-    fileprivate func setupTableViewConstraints() {
+    private func setupTableViewConstraints() {
         epTableView.anchor(top: container.topAnchor,
                            left: container.leftAnchor,
                            bottom: container.bottomAnchor,

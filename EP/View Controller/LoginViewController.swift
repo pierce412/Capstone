@@ -16,11 +16,11 @@ class LoginViewController: UIViewController {
     lazy var loginRegisterButton: UIButton = {
         let button = UIButton(type: .system)
         button.isEnabled = false
-        button.backgroundColor = UIColor.mainSchemeColor2()
+        button.backgroundColor = UIColor.barGray()
         button.setTitle("Register", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(UIColor.white, for: .normal)
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.addTarget(self, action: #selector(handleLoginOrRegister), for: .touchUpInside)
@@ -28,14 +28,14 @@ class LoginViewController: UIViewController {
     }()
     let logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo_placeholder")
+        imageView.image = UIImage(named: "ap256")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     let inputsContainerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.offWhite()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
@@ -50,8 +50,10 @@ class LoginViewController: UIViewController {
     let emailTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
+        tf.text = UserDefaults.standard.string(forKey: "email") ?? ""
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.autocapitalizationType = .none
+        tf.clearButtonMode = .whileEditing
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
@@ -61,37 +63,54 @@ class LoginViewController: UIViewController {
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.isSecureTextEntry = true
         tf.autocapitalizationType = .none
+        tf.clearButtonMode = .whileEditing
          tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
         let sc = UISegmentedControl(items: ["Login", "Register"])
-        sc.backgroundColor = UIColor.mainSchemeColor3()
+        sc.backgroundColor = UIColor.mainColorScheme1()
         sc.translatesAutoresizingMaskIntoConstraints = false
         sc.tintColor = UIColor.white
-        sc.layer.cornerRadius = 5
+        sc.layer.cornerRadius = 3
         sc.layer.masksToBounds = true
         sc.selectedSegmentIndex = 1
         sc.addTarget(self, action: #selector(handleLoginRegisterSegmentedControlChange), for: .valueChanged)
         return sc
     }()
+    let passwordResetLabel: UIButton = {
+        let view = UIButton()
+        view.isUserInteractionEnabled = true
+        view.setTitle("Reset password", for: .normal)
+        view.addTarget(self, action: #selector(handleForgotPassword), for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setTitleColor(UIColor.offWhite(), for: .normal)
+        view.titleLabel?.font = UIFont.preferredFont(forTextStyle: .caption1)
+        
+        return view
+    }()
     //**********************************************************************
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.mainSchemeColor1()
+        print("Login controller viewDidLoad")
+        view.backgroundColor = UIColor.mainColorScheme1()
         view.addSubview(loginRegisterSegmentedControl)
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
         view.addSubview(logoImageView)
+        view.addSubview(passwordResetLabel)
         setupLoginRegisterSegmentedControl()
         setupInputsContainerView()
         setupLoginRegisterButton()
         setupLogoImageView()
+        setupForgotPasswordButton()
     }
     //MARK: - Local Functions
-
-    @objc func handleLoginOrRegister(){
+    @objc func handleForgotPassword() {
+        
+    }
+    @objc func handleLoginOrRegister() {
         if loginRegisterSegmentedControl.selectedSegmentIndex == 0 {
             handleLogin()
         }
@@ -99,7 +118,7 @@ class LoginViewController: UIViewController {
             handleRegister()
         }
     }
-    @objc fileprivate func handleLogin() {
+    @objc private func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { print("Form is not valid"); return }
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             //have to do if let error = (error as NSError?).userInfo[error_name]
@@ -113,13 +132,17 @@ class LoginViewController: UIViewController {
                 print("Error logging in: \(String(describing: error?.localizedDescription))")
                 return
             }
+            UserDefaults.standard.set(email, forKey: "email")
             print("logged in")
+            
             //self.navigationController?.pushViewController(AircraftListViewController(), animated: true)
+            
+            //if the logged in user is verified
             self.dismiss(animated: true, completion: nil)
         }
     }
     
-    @objc fileprivate func handleRegister() {
+    @objc private func handleRegister() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { print("Form is not valid"); return }
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error != nil {
@@ -132,7 +155,11 @@ class LoginViewController: UIViewController {
             guard let uid = user?.uid else { return }
             let ref = Database.database().reference(fromURL: "https://emergencyprocedure-42955.firebaseio.com/")
             let usersReference = ref.child("users").child(uid)
-            let values = ["email": email]
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .medium
+            dateFormatter.timeStyle = .none
+            let date = dateFormatter.string(from: Date())
+            let values = ["email": email, "account_created_date": date]
             usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 if err != nil {
                     print("Error saving user: \(String(describing: error?.localizedDescription))")
@@ -176,10 +203,10 @@ class LoginViewController: UIViewController {
         }
         else {
             loginRegisterButton.isEnabled = false
-            loginRegisterButton.backgroundColor = UIColor.mainSchemeColor2()
+            loginRegisterButton.backgroundColor = UIColor.barGray()
         }
     }
-    fileprivate func setupInputsContainerView() {
+    private func setupInputsContainerView() {
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
@@ -191,7 +218,9 @@ class LoginViewController: UIViewController {
         
         emailTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
         emailTextField.topAnchor.constraint(equalTo: inputsContainerView.topAnchor).isActive = true
-        emailTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        //emailTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        emailTextField.trailingAnchor.constraint(equalTo: inputsContainerView.trailingAnchor, constant: -8).isActive = true
+
         emailTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2).isActive = true
         
         emailSeparatorView.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor).isActive = true
@@ -201,25 +230,31 @@ class LoginViewController: UIViewController {
         
         passwordTextField.leftAnchor.constraint(equalTo: inputsContainerView.leftAnchor, constant: 12).isActive = true
         passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor).isActive = true
-        passwordTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        //passwordTextField.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
+        passwordTextField.trailingAnchor.constraint(equalTo: inputsContainerView.trailingAnchor, constant: -8).isActive = true
         passwordTextField.heightAnchor.constraint(equalTo: inputsContainerView.heightAnchor, multiplier: 1/2).isActive = true
     }
-    fileprivate func setupLoginRegisterSegmentedControl() {
+    private func setupLoginRegisterSegmentedControl() {
         loginRegisterSegmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         loginRegisterSegmentedControl.bottomAnchor.constraint(equalTo: inputsContainerView.topAnchor, constant: -12).isActive = true
         loginRegisterSegmentedControl.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
         loginRegisterSegmentedControl.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
-    fileprivate func setupLoginRegisterButton() {
+    private func setupLoginRegisterButton() {
     loginRegisterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     loginRegisterButton.topAnchor.constraint(equalTo: inputsContainerView.bottomAnchor, constant: 12).isActive = true
     loginRegisterButton.widthAnchor.constraint(equalTo: inputsContainerView.widthAnchor).isActive = true
     loginRegisterButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
     }
-    fileprivate func setupLogoImageView() {
+    private func setupLogoImageView() {
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -20).isActive = true
-        logoImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        logoImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -50).isActive = true
+
+    }
+    private func setupForgotPasswordButton() {
+        passwordResetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        passwordResetLabel.topAnchor.constraint(equalTo: loginRegisterButton.bottomAnchor, constant: 15).isActive = true
+        passwordResetLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        passwordResetLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
 }

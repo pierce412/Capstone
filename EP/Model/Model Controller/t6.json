@@ -1,8 +1,8 @@
     {  "tmsID": "T6B",
         "tmsName":"T6-B Texan",
         "aircraftIconImageName": "",
-        "interimChangeID": "18",
-        "categories": ["hydraulic","electric","fuel","o2","engine","takeoff","general"],
+        "interimChangeID": "Interim Change: 18",
+        "categories": ["hydraulic","electric","fuel","o2","engine","general"],
         "interimChangeDate": "2017-12-01",
         "emergencyProcedures" : [ {
                                  "category" : "hydraulic",
@@ -1225,7 +1225,7 @@
                                             ],
                                  "title" : "Forced landing"},
                                  
-                                 {"category" : "takeoff",
+                                 {"category" : "general",
                                  "shortName" : "abort",
                                  "steps" : [{"step" : "Abort","type" : "title"},
                                             {"step" : "*1. PCL - IDLE", "type" : "memoryBold"},
@@ -1236,7 +1236,7 @@
                                  "title" : "Abort"},
                                  
                                  
-                                 {"category" : "takeoff",
+                                 {"category" : "general",
                                  "shortName" : "tireFailDuringTakeoff",
                                  "steps" : [{"step" : "Tire failure during takeoff","type" : "title"},
                                             {"step" : "If the decision is made to stop:", "type" : "logic"},
@@ -1249,7 +1249,7 @@
                                             ],
                                  "title" : "Tire failure during takeoff"},
                                  
-                                 {"category" : "takeoff",
+                                 {"category" : "general",
                                  "shortName" : "engineFailTakeoff",
                                  "steps" : [{"step" : "Engine failure immediately after takeoff (sufficient runway remaining straight ahead)","type" : "title"},
                                             {"step" : "warning","type" : "headerWarning"},

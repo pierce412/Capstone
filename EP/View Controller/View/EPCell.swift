@@ -10,7 +10,7 @@ class EPCell: UITableViewCell {
         view.contentMode = .scaleToFill
         view.numberOfLines = 0
         view.lineBreakMode = .byWordWrapping
-        view.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        view.font = UIFont.preferredFont(forTextStyle: .headline)
         return view
     }()
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

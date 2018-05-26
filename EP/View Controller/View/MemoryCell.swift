@@ -17,7 +17,7 @@ class MemoryCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let marginGuide = contentView.layoutMarginsGuide
         contentView.addSubview(memoryLabel)
-        memoryLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor).isActive = true
+        memoryLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 15).isActive = true
         memoryLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         memoryLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
         memoryLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true

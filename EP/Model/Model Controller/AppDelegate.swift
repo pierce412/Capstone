@@ -9,14 +9,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = UINavigationController(rootViewController: AircraftListViewController())
-        print("network")
+        window?.backgroundColor = UIColor.mainColorScheme1()
         //Navigation bar
         let navigationBarAppearance = UINavigationBar.appearance()
-        navigationBarAppearance.tintColor = UIColor.black
-        navigationBarAppearance.barTintColor = UIColor.epYellow()
-        //navigationBarAppearance.setBackgroundImage(UIImage(named: ""), for: UIBarMetrics.default)
-        //navigationBarAppearance.shadowImage = UIImage(named: "")
+        navigationBarAppearance.tintColor = UIColor.offWhite()
+        navigationBarAppearance.barTintColor = UIColor.mainColorScheme1()
+        navigationBarAppearance.backgroundColor = UIColor.white
+        navigationBarAppearance.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.offWhite()]
+        navigationBarAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.offWhite()]
+        //status bar style, changed plist too 
+        application.statusBarStyle = .lightContent
         return true
+    }
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("Application Will Terminate")
+    }
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("Application Did enter background")
+    }
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print("Application will enter foreground")
+    }
+    func applicationWillResignActive(_ application: UIApplication) {
+        print("Application will resign active")
+    }
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("Application did become active")
     }
 }
 

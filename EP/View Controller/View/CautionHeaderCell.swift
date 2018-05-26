@@ -26,11 +26,11 @@ class CautionHeaderCell: UITableViewCell {
         super.layoutSubviews()
         if step != nil {
             contentView.addSubview(cautionImageView)
-            let marginGuide = contentView.layoutMarginsGuide
+            //let marginGuide = contentView.layoutMarginsGuide
             
             cautionImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
             cautionImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-            cautionImageView.widthAnchor.constraint(equalToConstant: 90.0).isActive = true
+            cautionImageView.widthAnchor.constraint(equalToConstant: 85.0).isActive = true
             cautionImageView.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
             
             

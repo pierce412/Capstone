@@ -23,10 +23,10 @@ class NoteHeaderCell: UITableViewCell {
             let marginGuide = contentView.layoutMarginsGuide
             headerLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
             headerLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-            headerLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
-            headerLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
-            headerLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3).isActive = true
-            headerLabel.heightAnchor.constraint(equalToConstant: 27.5).isActive = true
+            //headerLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
+            //headerLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
+            //headerLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.3).isActive = true
+            //headerLabel.heightAnchor.constraint(equalToConstant: 27.5).isActive = true
             
             headerLabel.text = "Note"
         }

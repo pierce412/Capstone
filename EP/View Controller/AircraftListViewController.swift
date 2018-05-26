@@ -7,7 +7,7 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: - Properties
     var isVerified: Bool?
     var aircraft: [Aircraft]?
-  
+    
     //*************** Views***************
     let container: UIView = {
         let view = UIView()
@@ -15,6 +15,7 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     }()
     let listTableView: UITableView = {
         let view = UITableView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.register(AircraftCell.self, forCellReuseIdentifier: Constants.AircraftCell)
         return view
     }()
@@ -22,38 +23,58 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //notification to reload
-        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        print("Aircraft List viewDidLoad")
         
-        print("current user uid is: \(Auth.auth().currentUser?.uid)")
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(handleLogout))
+        /* uncomment to force log someone out - for testing */
+        //handleLogout()
+        // print("Current user: \(Auth.auth().currentUser?.uid) , verified: \(Auth.auth().currentUser?.isEmailVerified)")
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
             handleLogout()
         }
-        //guard let isVerified = Auth.auth().currentUser?.isEmailVerified else { return }
-        setupListTableView()
-        setupViews()
-        self.title = String(describing: isVerified)
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
-        self.navigationItem.setRightBarButton(addButton, animated: true)
+        else {
+            NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+            setupListTableView()
+            setupViews()
+            checkAccountStatus()
+            
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(handleLogout))
+            guard let isVerified = Auth.auth().currentUser?.isEmailVerified else { return }
+            self.title = "Aircraft"
+            if(isVerified){
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Subscribe", style: .plain, target: self, action: #selector(handleSubscribe))
+            }
+//            else {
+//                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Manage", style: .plain, target: self, action: #selector(handleAccountManagement))
+//            }
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        self.navigationItem.title = ""
+    private func checkAccountStatus() {
+        guard let userIsVerified = Auth.auth().currentUser?.isEmailVerified else { return }
+        if(!userIsVerified){
+            let ua = UnauthorizedUserViewController()
+            ua.modalPresentationStyle = .overCurrentContext
+            present(ua, animated: true, completion: nil)
+        }
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.title = "EP"
+    @objc private func handleSubscribe() {
+       print("subscribe button tapped")
+       let destinationVC = SubscriptionViewController()
+        destinationVC.modalPresentationStyle = .overCurrentContext
+        present(destinationVC, animated: true, completion: nil)
+        
     }
+//    @objc private func handleAccountManagement() {
+//        print("Handle manage tappped")
+//    }
     
-    @objc fileprivate func loadList(notification: NSNotification) {
+    @objc private func loadList(notification: NSNotification) {
         DispatchQueue.main.async {
             self.listTableView.reloadData()
         }
-        
     }
-    @objc fileprivate func handleLogout() {
+    @objc private func handleLogout() {
         print("Handling logout")
         do {
             try Auth.auth().signOut()
@@ -69,13 +90,8 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         present(loginViewController, animated: true, completion: nil)
     }
     
-    @objc fileprivate func addButtonTapped() {
-        print("Add button tapped")
-        navigationController?.pushViewController(AddAircraftViewController(), animated: true)
-    }
- 
     //MARK: - TableView Methods
-    fileprivate func setupListTableView() {
+    private func setupListTableView() {
         listTableView.delegate = self
         listTableView.dataSource = self
     }
@@ -86,6 +102,7 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.AircraftCell, for: indexPath) as! AircraftCell
         let ac = AircraftController.shared.allAircraft[indexPath.row]
         cell.ac = ac
+        cell.selectionStyle = .none
         cell.layoutSubviews()
         return cell
     }
@@ -95,38 +112,20 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         let destinationVC = EPListViewController()
         destinationVC.ac = ac
         //destinationVC.categories = ac.categories
-        print("Destination A/C is  \(ac.tmsID)")
+        //print("Destination A/C is  \(ac.tmsID)")
         navigationController?.pushViewController(destinationVC, animated: true)
     }
     // MARK: - Constraints
-    fileprivate func setupViews() {
-        view.addSubview(container)
-        container.addSubview(listTableView)
-        setContainerConstraints()
+    private func setupViews() {
+        view.addSubview(listTableView)
         setupTableViewConstraints()
     }
-    fileprivate func setContainerConstraints(){
-        container.anchor(top: view.safeAreaLayoutGuide.topAnchor,
-                         left: view.leftAnchor,
-                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 0,
-                         paddingLeft: 0,
-                         paddingBottom: 0,
-                         paddingRight: 0,
-                         width: 0, height: 0)
+    
+    private func setupTableViewConstraints() {
+        listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        listTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        listTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        listTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
-    fileprivate func setupTableViewConstraints() {
-        listTableView.anchor(top: container.topAnchor,
-                         left: container.leftAnchor,
-                         bottom: container.bottomAnchor,
-                         right: container.rightAnchor,
-                         paddingTop: 0,
-                         paddingLeft: 0,
-                         paddingBottom: 0,
-                         paddingRight: 0,
-                         width: 0,
-                         height: 0)
-    }
 }
