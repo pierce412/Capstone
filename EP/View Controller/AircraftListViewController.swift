@@ -7,6 +7,7 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     //MARK: - Properties
     var isVerified: Bool?
     var aircraft: [Aircraft]?
+    let fetcher = ReceiptFetcher()
     
     //*************** Views***************
     let container: UIView = {
@@ -23,10 +24,12 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Aircraft List viewDidLoad")
-        
         /* uncomment to force log someone out - for testing */
         //handleLogout()
+        //fetcher.fetchReceipt()
+        print("Aircraft List viewDidLoad")
+        
+        
         // print("Current user: \(Auth.auth().currentUser?.uid) , verified: \(Auth.auth().currentUser?.isEmailVerified)")
         if Auth.auth().currentUser?.uid == nil {
             perform(#selector(handleLogout), with: nil, afterDelay: 0)
@@ -36,7 +39,7 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
             NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
             setupListTableView()
             setupViews()
-            checkAccountStatus()
+            //checkAccountStatus()
             
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(handleLogout))
             guard let isVerified = Auth.auth().currentUser?.isEmailVerified else { return }
@@ -59,7 +62,7 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     @objc private func handleSubscribe() {
-       print("subscribe button tapped")
+       //print("subscribe button tapped")
        let destinationVC = SubscriptionViewController()
         destinationVC.modalPresentationStyle = .overCurrentContext
         present(destinationVC, animated: true, completion: nil)
@@ -111,8 +114,6 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         let ac = AircraftController.shared.allAircraft[indexPath.row]
         let destinationVC = EPListViewController()
         destinationVC.ac = ac
-        //destinationVC.categories = ac.categories
-        //print("Destination A/C is  \(ac.tmsID)")
         navigationController?.pushViewController(destinationVC, animated: true)
     }
     // MARK: - Constraints

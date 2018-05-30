@@ -54,6 +54,7 @@ class LoginViewController: UIViewController {
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.autocapitalizationType = .none
         tf.clearButtonMode = .whileEditing
+        tf
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
@@ -118,6 +119,7 @@ class LoginViewController: UIViewController {
             handleRegister()
         }
     }
+    //****************************************** LOGIN  ********************************************************
     @objc private func handleLogin() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { print("Form is not valid"); return }
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
@@ -141,7 +143,7 @@ class LoginViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
+    //******************************************REGISTER ********************************************************
     @objc private func handleRegister() {
         guard let email = emailTextField.text, let password = passwordTextField.text else { print("Form is not valid"); return }
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -174,10 +176,11 @@ class LoginViewController: UIViewController {
                 //alert user
                 let ac = UIAlertController(title: "Account verification required", message: "A verification e-mail has been sent to \(email)\n", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-               ac.addAction(okAction)
+                ac.addAction(okAction)
                 self.present(ac, animated: true, completion: {
                     print("alert presented to user")
                     self.loginRegisterSegmentedControl.selectedSegmentIndex = 0
+                    self.loginRegisterButton.setTitle("Login", for: .normal)
                 })
                 //clear form
                 self.emailTextField.text = ""
@@ -199,7 +202,7 @@ class LoginViewController: UIViewController {
         
         if isFormValid {
             loginRegisterButton.isEnabled = true
-            loginRegisterButton.backgroundColor = UIColor.mainSchemeColor3()
+            loginRegisterButton.backgroundColor = UIColor.mainColorScheme2()
         }
         else {
             loginRegisterButton.isEnabled = false

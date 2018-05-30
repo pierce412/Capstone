@@ -131,15 +131,7 @@ class EmergencyProcedureViewController: UIViewController, UITableViewDataSource,
             cell.step = step.step
             cell.layoutSubviews()
             return cell
-            
-//        default:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.NonMemoryCell, for: indexPath) as! NonMemoryCell
-//            cell.step = step.step
-//            cell.layoutSubviews()
-//            return cell
-            
         }
-        
     }
     private func setupEpTableView() {
         epTableView.delegate = self

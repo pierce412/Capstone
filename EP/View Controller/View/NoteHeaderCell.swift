@@ -20,7 +20,7 @@ class NoteHeaderCell: UITableViewCell {
         super.layoutSubviews()
         if step != nil {
             contentView.addSubview(headerLabel)
-            let marginGuide = contentView.layoutMarginsGuide
+            //let marginGuide = contentView.layoutMarginsGuide
             headerLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
             headerLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
             //headerLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true

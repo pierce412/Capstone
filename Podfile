@@ -12,6 +12,7 @@ pod 'Firebase/Database'
 pod 'SVProgressHUD'
 pod 'ChameleonFramework'
 pod 'CodableFirebase'
+pod 'OpenSSL'
 end
 
 post_install do |installer|

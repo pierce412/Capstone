@@ -10,4 +10,6 @@ import Foundation
 
 enum IAPProduct: String {
     case yearAutoRenewSubscription = "com.verticalendgame.EP.Subscription"
+    case sixMonthAutoRenewSubscription = "com.verticalendgame.EP.Subscription3"
+    case monthAutoRenewSubscription = "com.verticalendgame.EP.Subscription2"
 }

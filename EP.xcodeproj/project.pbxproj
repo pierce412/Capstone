@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		3B04B64220926272001A3E9A /* EPListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B04B64120926272001A3E9A /* EPListViewController.swift */; };
 		3B0E8F7F209BC4C10063B3C8 /* t6.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E8F7E209BC4C10063B3C8 /* t6.json */; };
+		3B2F482320BB82020070CC79 /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2F482220BB82020070CC79 /* ReceiptValidator.swift */; };
+		3B2F482820BB830E0070CC79 /* pkcs7_union_accessors.h in Sources */ = {isa = PBXBuildFile; fileRef = 3B2F482720BB830E0070CC79 /* pkcs7_union_accessors.h */; };
+		3B2F482A20BB83680070CC79 /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B2F482920BB83680070CC79 /* pkcs7_union_accessors.c */; };
+		3B2F482C20BB95C50070CC79 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3B2F482B20BB95C50070CC79 /* AppleIncRootCertificate.cer */; };
 		3B3210AD2093731200ADF36B /* AircraftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3210AC2093731200ADF36B /* AircraftController.swift */; };
 		3B4E7ABD2091619000ACA1EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7ABC2091619000ACA1EB /* Extensions.swift */; };
 		3B4E7AC12091704900ACA1EB /* EmergencyProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */; };
@@ -48,6 +52,7 @@
 		3BF50B5E20A27E8700C3444C /* master.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BF50B5D20A27E8700C3444C /* master.json */; };
 		3BF50B6020A3181500C3444C /* V22.json in Resources */ = {isa = PBXBuildFile; fileRef = 3BF50B5F20A3181500C3444C /* V22.json */; };
 		3BF50B6620A4D8DF00C3444C /* NonMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF50B6520A4D8DF00C3444C /* NonMemoryCell.swift */; };
+		3BF84C9D20BB580E00217AE4 /* ReceiptFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF84C9C20BB580E00217AE4 /* ReceiptFetcher.swift */; };
 		6260D016AE3430BED3FD623C /* Pods_EP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A16E03564E218925B886A6B /* Pods_EP.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +62,11 @@
 		3293DAD2F47A528E1FEF3A28 /* Pods-EP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EP/Pods-EP.debug.xcconfig"; sourceTree = "<group>"; };
 		3B04B64120926272001A3E9A /* EPListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPListViewController.swift; sourceTree = "<group>"; };
 		3B0E8F7E209BC4C10063B3C8 /* t6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = t6.json; sourceTree = "<group>"; };
+		3B2F481F20BB7E180070CC79 /* EP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EP-Bridging-Header.h"; sourceTree = "<group>"; };
+		3B2F482220BB82020070CC79 /* ReceiptValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptValidator.swift; sourceTree = "<group>"; };
+		3B2F482720BB830E0070CC79 /* pkcs7_union_accessors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pkcs7_union_accessors.h; sourceTree = "<group>"; };
+		3B2F482920BB83680070CC79 /* pkcs7_union_accessors.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pkcs7_union_accessors.c; sourceTree = "<group>"; };
+		3B2F482B20BB95C50070CC79 /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
 		3B3210AC2093731200ADF36B /* AircraftController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftController.swift; sourceTree = "<group>"; };
 		3B4E7ABC2091619000ACA1EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyProcedure.swift; sourceTree = "<group>"; };
@@ -99,6 +109,7 @@
 		3BF50B5D20A27E8700C3444C /* master.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = master.json; sourceTree = "<group>"; };
 		3BF50B5F20A3181500C3444C /* V22.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = V22.json; sourceTree = "<group>"; };
 		3BF50B6520A4D8DF00C3444C /* NonMemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonMemoryCell.swift; sourceTree = "<group>"; };
+		3BF84C9C20BB580E00217AE4 /* ReceiptFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +134,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3B15F5572095138900327ADB /* Model Controller */ = {
+		3B15F5572095138900327ADB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				3BC0F0C5208E326B00E20519 /* AppDelegate.swift */,
@@ -133,12 +144,13 @@
 				3B3210AC2093731200ADF36B /* AircraftController.swift */,
 				3B505C8120B0D1C400DAD04E /* AuthenticationManager.swift */,
 			);
-			path = "Model Controller";
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		3B4E7ABB209160AC00ACA1EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3B2F482B20BB95C50070CC79 /* AppleIncRootCertificate.cer */,
 				3BE25A4B2092D8F40072AEA1 /* GoogleService-Info.plist */,
 				3BC0F0CC208E326C00E20519 /* Assets.xcassets */,
 				3BC0F0CE208E326C00E20519 /* LaunchScreen.storyboard */,
@@ -163,7 +175,8 @@
 				3B4E7AC22091769C00ACA1EB /* ProcedureStep.swift */,
 				3B69A6A12092228B000F0243 /* Aircraft.swift */,
 				3B69A6A3209227CA000F0243 /* EPUser.swift */,
-				3B15F5572095138900327ADB /* Model Controller */,
+				3B15F5572095138900327ADB /* Controller */,
+				3B2F481F20BB7E180070CC79 /* EP-Bridging-Header.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,6 +255,10 @@
 			children = (
 				3BE2A29520B9E57700575C00 /* IAPProducts.swift */,
 				3BE2A29720B9E6C800575C00 /* IAPService.swift */,
+				3BF84C9C20BB580E00217AE4 /* ReceiptFetcher.swift */,
+				3B2F482220BB82020070CC79 /* ReceiptValidator.swift */,
+				3B2F482720BB830E0070CC79 /* pkcs7_union_accessors.h */,
+				3B2F482920BB83680070CC79 /* pkcs7_union_accessors.c */,
 			);
 			path = IAP;
 			sourceTree = "<group>";
@@ -289,6 +306,7 @@
 				TargetAttributes = {
 					3BC0F0C1208E326B00E20519 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -325,6 +343,7 @@
 			files = (
 				3BF50B6020A3181500C3444C /* V22.json in Resources */,
 				3BC0F0D0208E326C00E20519 /* LaunchScreen.storyboard in Resources */,
+				3B2F482C20BB95C50070CC79 /* AppleIncRootCertificate.cer in Resources */,
 				3BF50B5E20A27E8700C3444C /* master.json in Resources */,
 				3B0E8F7F209BC4C10063B3C8 /* t6.json in Resources */,
 				3BC0F0CD208E326C00E20519 /* Assets.xcassets in Resources */,
@@ -401,6 +420,7 @@
 				3B4E7ABD2091619000ACA1EB /* Extensions.swift in Sources */,
 				3B69A6A4209227CA000F0243 /* EPUser.swift in Sources */,
 				3B69A6B1209249B4000F0243 /* EmergencyProcedureViewController.swift in Sources */,
+				3B2F482820BB830E0070CC79 /* pkcs7_union_accessors.h in Sources */,
 				3BD3DAC520A924C400C307EE /* NoteHeaderCell.swift in Sources */,
 				3BBCA94820A5F513003399CC /* MemoryCell.swift in Sources */,
 				3BBCA95420A638F7003399CC /* NoteCell.swift in Sources */,
@@ -410,6 +430,7 @@
 				3B505C8820B0E5EB00DAD04E /* BrickView.swift in Sources */,
 				3BD3DA9620A8C81900C307EE /* WarningHeaderCell.swift in Sources */,
 				3BD3DAC320A924BA00C307EE /* CautionHeaderCell.swift in Sources */,
+				3B2F482A20BB83680070CC79 /* pkcs7_union_accessors.c in Sources */,
 				3BBCA95C20A63D4C003399CC /* TitleCell.swift in Sources */,
 				3BBCA94A20A61191003399CC /* LogicCell.swift in Sources */,
 				3B9C4B5920939ACB00506A33 /* Constants.swift in Sources */,
@@ -418,8 +439,10 @@
 				3B04B64220926272001A3E9A /* EPListViewController.swift in Sources */,
 				3B4E7AC12091704900ACA1EB /* EmergencyProcedure.swift in Sources */,
 				3B69A6A22092228B000F0243 /* Aircraft.swift in Sources */,
+				3BF84C9D20BB580E00217AE4 /* ReceiptFetcher.swift in Sources */,
 				3BBCA94C20A613BA003399CC /* MemoryBoldCell.swift in Sources */,
 				3B3210AD2093731200ADF36B /* AircraftController.swift in Sources */,
+				3B2F482320BB82020070CC79 /* ReceiptValidator.swift in Sources */,
 				3BBCA95620A639F6003399CC /* AdvisoryCell.swift in Sources */,
 				3BCD056A20B8D44300CDC356 /* SubscriptionViewController.swift in Sources */,
 				3BE2A29620B9E57700575C00 /* IAPProducts.swift in Sources */,
@@ -560,9 +583,11 @@
 			baseConfigurationReference = 3293DAD2F47A528E1FEF3A28 /* Pods-EP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EP/EP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CG8J8CVZL;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/EP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -570,6 +595,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.verticalendgame.EP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EP/Model/EP-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -580,9 +607,11 @@
 			baseConfigurationReference = 2D1C1EDE61C93D1DA1707787 /* Pods-EP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = EP/EP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CG8J8CVZL;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/EP/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -590,6 +619,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.verticalendgame.EP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "EP/Model/EP-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -31,9 +31,6 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             segControl.addTarget(self, action: #selector(segValueChanged), for: .valueChanged)
             segControl.selectedSegmentIndex = 0
             sectionArray = arr[segControl.selectedSegmentIndex]
-            for ep in sectionArray {
-                print(ep.title)
-            }
             setupEpListTableView()
             setupViews()
            
@@ -48,7 +45,6 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         navigationItem.searchController = searchController
         searchController.searchBar.tintColor = UIColor.offWhite()
         searchController.searchBar.barStyle = .blackTranslucent
-        //searchController.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         searchController.searchBar.sizeToFit()
     }
@@ -56,7 +52,7 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @objc func segValueChanged() {
         sectionArray = arr[segControl.selectedSegmentIndex]
         tableView.reloadData()
-        print("Seg value changed: \(segControl.selectedSegmentIndex)")
+        //print("Seg value changed: \(segControl.selectedSegmentIndex)")
         guard let ac = ac else { return }
         self.navigationItem.title = ac.categories[segControl.selectedSegmentIndex]
     }
@@ -98,7 +94,7 @@ class EPListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         let destinationVC = EmergencyProcedureViewController()
         destinationVC.ep = ep
-        print(ep.shortName)
+        //print(ep.shortName)
         navigationController?.pushViewController(destinationVC, animated: true)
         
     }
