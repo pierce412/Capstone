@@ -20,39 +20,47 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         view.register(AircraftCell.self, forCellReuseIdentifier: Constants.AircraftCell)
         return view
     }()
+//    let indicator: UIActivityIndicatorView = {
+//        let activity = UIActivityIndicatorView()
+//        activity.translatesAutoresizingMaskIntoConstraints = false
+//        activity.stopAnimating()
+//        activity.color = UIColor.mainColorScheme1()
+//        return activity
+//    }()
     //*************************************
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        /* uncomment to force log someone out - for testing */
-        //handleLogout()
-        //fetcher.fetchReceipt()
+        //indicator.startAnimating()
         print("Aircraft List viewDidLoad")
+        print("User: \(String(describing: Auth.auth().currentUser?.uid)) is email verified: \(String(describing: Auth.auth().currentUser?.isEmailVerified))")
+        print("User: \(String(describing: Auth.auth().currentUser?.email)) is valid: \(String(describing: Auth.auth().currentUser?.isEmailVerified))")
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+        setupListTableView()
+        setupViews()
+        //checkAccountStatus()
         
-        
-        // print("Current user: \(Auth.auth().currentUser?.uid) , verified: \(Auth.auth().currentUser?.isEmailVerified)")
-        if Auth.auth().currentUser?.uid == nil {
-            perform(#selector(handleLogout), with: nil, afterDelay: 0)
-            handleLogout()
-        }
-        else {
-            NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
-            setupListTableView()
-            setupViews()
-            //checkAccountStatus()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(handleLogout))
+        guard let isVerified = Auth.auth().currentUser?.isEmailVerified else { print("Unable to determine isEmailVerified."); return }
+        self.title = "Aircraft"
+        if(isVerified){
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Subscribe", style: .plain, target: self, action: #selector(handleSubscribe))
             
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(handleLogout))
-            guard let isVerified = Auth.auth().currentUser?.isEmailVerified else { return }
-            self.title = "Aircraft"
-            if(isVerified){
-                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Subscribe", style: .plain, target: self, action: #selector(handleSubscribe))
-            }
-//            else {
-//                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Manage", style: .plain, target: self, action: #selector(handleAccountManagement))
-//            }
+            //            else {
+            //                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Manage", style: .plain, target: self, action: #selector(handleAccountManagement))
+            //            }
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
     }
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(true)
+    //        if(Auth.auth().currentUser?.uid != nil) {
+    //            NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
+    //            setupListTableView()
+    //            setupViews()
+    //        }
+    //    }
     private func checkAccountStatus() {
         guard let userIsVerified = Auth.auth().currentUser?.isEmailVerified else { return }
         if(!userIsVerified){
@@ -62,15 +70,13 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     @objc private func handleSubscribe() {
-       //print("subscribe button tapped")
-       let destinationVC = SubscriptionViewController()
+        let destinationVC = SubscriptionViewController()
         destinationVC.modalPresentationStyle = .overCurrentContext
         present(destinationVC, animated: true, completion: nil)
-        
     }
-//    @objc private func handleAccountManagement() {
-//        print("Handle manage tappped")
-//    }
+    //    @objc private func handleAccountManagement() {
+    //        print("Handle manage tappped")
+    //    }
     
     @objc private func loadList(notification: NSNotification) {
         DispatchQueue.main.async {
@@ -119,14 +125,20 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Constraints
     private func setupViews() {
         view.addSubview(listTableView)
-        setupTableViewConstraints()
+        //view.addSubview(indicator)
+        setupConstraints()
     }
     
-    private func setupTableViewConstraints() {
+    private func setupConstraints() {
         listTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         listTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         listTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         listTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+//        indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        indicator.widthAnchor.constraint(equalToConstant: 250).isActive = true
+//        indicator.heightAnchor.constraint(equalToConstant: 250).isActive = true
     }
     
 }

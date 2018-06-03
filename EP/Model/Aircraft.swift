@@ -1,7 +1,7 @@
 //  Aircraft.swift
 import Foundation
 
-struct Aircraft: Decodable {
+struct Aircraft: Codable {
     let tmsID: String
     let tmsName: String
     let aircraftIconImageName: String

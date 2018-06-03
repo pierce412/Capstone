@@ -4390,8 +4390,103 @@
                                                       ],
                                            "title" : "Rescue"}
                                            
-                                           ]}
-                  
+                                           ]},
+                  {  "tmsID": "AV8B",
+                  "tmsName":"AV-8B Harrier",
+                  "aircraftIconImageName": "",
+                  "interimChangeID": "Interim Change: 87",
+                  "categories": ["warning","caution","advisory","flight","ground"],
+                  "interimChangeDate": "2017-11-19",
+                  "emergencyProcedures" : [{"category" : "warning",
+                                           "shortName" : "trimAidDeviceFailure",
+                                           "steps" : [{"step" : "Trim aid device failure (TAD)","type" : "title"},
+                                                      {"step" : "1. TAD circuit breaker (right front console) - CHECK IN OR PULL AND RESET", "type" : "nonMemory"},
+                                                      {"step" : "2. TRIM AID switch - ENGAGE AFTER TAD FAIL CAUTION EXTINGUISHES", "type" : "nonMemory"},
+                                                      {"step" : "note","type" : "headerNote"},
+                                                      {"step" : "If TAD FAIL caution remains illuminated, notify maintenance personnel after landing and leave the BAT and AVIONICS MASTER switches ON until the TAD failure code lights, labeled L1 through L4, in the right aft avionics bay, are inspected. If the battery is turned OFF, the TAD failure code will be lost.", "type" : "note"}
+                                                      ],
+                                           "title" : "Trim aid device failure (TAD)"}
+                  ]},
+                  {  "tmsID": "CH53E",
+                  "tmsName":"CH-53 Super Staillion",
+                  "aircraftIconImageName": "",
+                  "interimChangeID": "Interim Change: 22",
+                  "categories": ["warning","caution","advisory","flight","ground"],
+                  "interimChangeDate": "2018-03-19",
+                  "emergencyProcedures" : [{"category" : "warning",
+                                           "shortName" : "trimAidDeviceFailure",
+                                           "steps" : [{"step" : "Trim aid device failure (TAD)","type" : "title"},
+                                                      {"step" : "1. TAD circuit breaker (right front console) - CHECK IN OR PULL AND RESET", "type" : "nonMemory"},
+                                                      {"step" : "2. TRIM AID switch - ENGAGE AFTER TAD FAIL CAUTION EXTINGUISHES", "type" : "nonMemory"},
+                                                      {"step" : "note","type" : "headerNote"},
+                                                      {"step" : "If TAD FAIL caution remains illuminated, notify maintenance personnel after landing and leave the BAT and AVIONICS MASTER switches ON until the TAD failure code lights, labeled L1 through L4, in the right aft avionics bay, are inspected. If the battery is turned OFF, the TAD failure code will be lost.", "type" : "note"}
+                                                      ],
+                                           "title" : "Trim aid device failure (TAD)"}
+                  ]},
+                  {  "tmsID": "AH1Z",
+                  "tmsName":"AH-1Z Cobra",
+                  "aircraftIconImageName": "",
+                  "interimChangeID": "Interim Change: 12",
+                  "categories": ["warning","caution","advisory","flight","ground"],
+                  "interimChangeDate": "2018-04-20",
+                  "emergencyProcedures" : [{"category" : "warning",
+                                           "shortName" : "trimAidDeviceFailure",
+                                           "steps" : [{"step" : "Trim aid device failure (TAD)","type" : "title"},
+                                                      {"step" : "1. TAD circuit breaker (right front console) - CHECK IN OR PULL AND RESET", "type" : "nonMemory"},
+                                                      {"step" : "2. TRIM AID switch - ENGAGE AFTER TAD FAIL CAUTION EXTINGUISHES", "type" : "nonMemory"},
+                                                      {"step" : "note","type" : "headerNote"},
+                                                      {"step" : "If TAD FAIL caution remains illuminated, notify maintenance personnel after landing and leave the BAT and AVIONICS MASTER switches ON until the TAD failure code lights, labeled L1 through L4, in the right aft avionics bay, are inspected. If the battery is turned OFF, the TAD failure code will be lost.", "type" : "note"}
+                                                      ],
+                                           "title" : "Trim aid device failure (TAD)"}
+                  ]},
+                  {  "tmsID": "UH1Y",
+                  "tmsName":"UH-1Y Huey",
+                  "aircraftIconImageName": "",
+                  "interimChangeID": "Interim Change: 13",
+                  "categories": ["warning","caution","advisory","flight","ground"],
+                  "interimChangeDate": "2018-04-12",
+                  "emergencyProcedures" : [{"category" : "warning",
+                                           "shortName" : "trimAidDeviceFailure",
+                                           "steps" : [{"step" : "Trim aid device failure (TAD)","type" : "title"},
+                                                      {"step" : "1. TAD circuit breaker (right front console) - CHECK IN OR PULL AND RESET", "type" : "nonMemory"},
+                                                      {"step" : "2. TRIM AID switch - ENGAGE AFTER TAD FAIL CAUTION EXTINGUISHES", "type" : "nonMemory"},
+                                                      {"step" : "note","type" : "headerNote"},
+                                                      {"step" : "If TAD FAIL caution remains illuminated, notify maintenance personnel after landing and leave the BAT and AVIONICS MASTER switches ON until the TAD failure code lights, labeled L1 through L4, in the right aft avionics bay, are inspected. If the battery is turned OFF, the TAD failure code will be lost.", "type" : "note"}
+                                                      ],
+                                           "title" : "Trim aid device failure (TAD)"}
+                  ]},
+                  {  "tmsID": "F18ABCD",
+                  "tmsName":"F/A-18 Hornet",
+                  "aircraftIconImageName": "",
+                  "interimChangeID": "Interim Change: 13",
+                  "categories": ["warning","caution","advisory","flight","ground"],
+                  "interimChangeDate": "2018-04-12",
+                  "emergencyProcedures" : [{"category" : "warning",
+                                           "shortName" : "trimAidDeviceFailure",
+                                           "steps" : [{"step" : "Trim aid device failure (TAD)","type" : "title"},
+                                                      {"step" : "1. TAD circuit breaker (right front console) - CHECK IN OR PULL AND RESET", "type" : "nonMemory"},
+                                                      {"step" : "2. TRIM AID switch - ENGAGE AFTER TAD FAIL CAUTION EXTINGUISHES", "type" : "nonMemory"},
+                                                      {"step" : "note","type" : "headerNote"},
+                                                      {"step" : "If TAD FAIL caution remains illuminated, notify maintenance personnel after landing and leave the BAT and AVIONICS MASTER switches ON until the TAD failure code lights, labeled L1 through L4, in the right aft avionics bay, are inspected. If the battery is turned OFF, the TAD failure code will be lost.", "type" : "note"}
+                                                      ],
+                                           "title" : "Trim aid device failure (TAD)"}
+                  ]},
+                  {  "tmsID": "SH60R",
+                  "tmsName":"SH-60 Seahwak",
+                  "aircraftIconImageName": "",
+                  "interimChangeID": "Interim Change: 34",
+                  "categories": ["warning","caution","advisory","flight","ground"],
+                  "interimChangeDate": "2018-06-01",
+                  "emergencyProcedures" : [{"category" : "warning",
+                                           "shortName" : "trimAidDeviceFailure",
+                                           "steps" : [{"step" : "Trim aid device failure (TAD)","type" : "title"},
+                                                      {"step" : "1. TAD circuit breaker (right front console) - CHECK IN OR PULL AND RESET", "type" : "nonMemory"},
+                                                      {"step" : "2. TRIM AID switch - ENGAGE AFTER TAD FAIL CAUTION EXTINGUISHES", "type" : "nonMemory"},
+                                                      {"step" : "note","type" : "headerNote"},
+                                                      {"step" : "If TAD FAIL caution remains illuminated, notify maintenance personnel after landing and leave the BAT and AVIONICS MASTER switches ON until the TAD failure code lights, labeled L1 through L4, in the right aft avionics bay, are inspected. If the battery is turned OFF, the TAD failure code will be lost.", "type" : "note"}
+                                                      ],
+                                           "title" : "Trim aid device failure (TAD)"}
+                  ]}
                   
 
                   ]}

@@ -8,8 +8,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     //declare an instance of IAPService in order to add the observer at the app level
     let observer = IAPService()
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        
         FirebaseApp.configure()
         //IAP setup
         IAPService.shared.getProducts()
@@ -18,7 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("payment queue observer added")
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: AircraftListViewController())
+        let loginController = LoginViewController()
+        window?.rootViewController = UINavigationController(rootViewController: loginController)
+        if(Auth.auth().currentUser != nil){
+            let navcon = UINavigationController(rootViewController: AircraftListViewController())
+            loginController.present(navcon, animated: false, completion: nil)
+        }
         window?.backgroundColor = UIColor.mainColorScheme1()
         //Navigation bar
         let navigationBarAppearance = UINavigationBar.appearance()
@@ -27,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.backgroundColor = UIColor.white
         navigationBarAppearance.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.offWhite()]
         navigationBarAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.offWhite()]
-        //status bar style, changed plist too 
+        //status bar style, changed plist too
         application.statusBarStyle = .lightContent
         return true
     }

@@ -1,6 +1,6 @@
 //  EmergencyProcedure.swift
 
-struct EmergencyProcedure: Decodable{
+struct EmergencyProcedure: Codable {
     let shortName: String
     let title: String
     let category: String
