@@ -4,13 +4,30 @@ import UIKit
 import StoreKit
 
 class SubscriptionViewController: UIViewController {
-    
+    let topContainer: UIView = {
+       let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    let iapImageView: UIImageView = {
+        let image = UIImage(named: "f18")
+        let view = UIImageView(image: image)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }() 
+    let bottomContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.offWhite()
+        return view
+    }()
     let titleLabel: UILabel = {
         let view = UILabel()
         view.text = "Emergency Procedure Subscription"
+        view.textColor = UIColor.offWhite()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont.preferredFont(forTextStyle: .title2)
-        view.numberOfLines = 2
+        view.font = UIFont.preferredFont(forTextStyle: .title3)
+        view.numberOfLines = 0
         view.textAlignment = .center
         return view
     }()
@@ -18,6 +35,7 @@ class SubscriptionViewController: UIViewController {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "Call to action text goes here"
+        view.textColor = UIColor.black
         view.font = UIFont.preferredFont(forTextStyle: .headline)
         view.numberOfLines = 0
         view.textAlignment = .center
@@ -26,8 +44,10 @@ class SubscriptionViewController: UIViewController {
     let termsLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "Terms go here"
-        view.font = UIFont.preferredFont(forTextStyle: .headline)
+        view.text = "Very convenient for studying Emergency Procedures. All-access to all T/M/S. Offline use included. Interim changes pushed to device. Cancel subsciption at any time. "
+        view.numberOfLines = 0
+        view.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        view.textColor = UIColor.mainColorScheme1()
         view.textAlignment = .center
         return view
     }()
@@ -71,65 +91,73 @@ class SubscriptionViewController: UIViewController {
     let restoreLabel: UILabel = {
         let view = UILabel()
         view.text = "Already Purchased?"
-        view.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        view.textAlignment = .right
+        view.font = UIFont.preferredFont(forTextStyle: .caption1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     let restoreButton: UIButton = {
         let view = UIButton()
         view.setTitle("Restore", for: .normal)
-        view.backgroundColor = UIColor.mainColorScheme1()
-        view.setTitleColor(UIColor.offWhite(), for: .normal)
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.matteBlack().cgColor
-        view.layer.borderWidth = 1.0
+        view.backgroundColor = UIColor.offWhite()
+        view.setTitleColor(UIColor.blue, for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self, action: #selector(handleRestore), for: .touchUpInside)
+        return view
+    }()
+    let restoreStackView: UIStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     let cancelButton: UIButton = {
         let view = UIButton()
         view.setTitle("Cancel", for: .normal)
-        view.setTitleColor(UIColor.mainColorScheme1(), for: .normal)
+        view.setTitleColor(UIColor.offWhite(), for: .normal)
+        view.layer.borderColor = UIColor.offWhite().cgColor
+        view.layer.borderWidth = 0.3
+        view.layer.cornerRadius = 7.0
+        view.layer.masksToBounds = true
         view.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         return view
     }()
-    //    var stackView: UIStackView = {
-    //        let view = UIStackView()
-    //        view.axis = .vertical
-    //        view.spacing = 5
-    //        view.distribution = .fillEqually
-    //        view.translatesAutoresizingMaskIntoConstraints = false
-    //        return view
-    //    }()
     
     var requestProd = SKProductsRequest()
     var products = [SKProduct]()
     //************************************************************************************************************************
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupStackView()
         //IAPService.shared.getProducts()
         
-        //setup purchase buttons SV
-        //stackView = UIStackView(arrangedSubviews: [yearButton, sixMonthButton, monthButton])
+        //view.frame = CGRect(x: 30, y: 30, width: UIScreen.main.bounds.width - 100, height: UIScreen.main.bounds.height - 100)
+        //view.backgroundColor = UIColor.offWhite()
+        view.addSubview(topContainer)
+        view.addSubview(bottomContainer)
         
-        view.frame = CGRect(x: 30, y: 30, width: UIScreen.main.bounds.width - 100, height: UIScreen.main.bounds.height - 100)
-        view.backgroundColor = UIColor.offWhite()
+        topContainer.addSubview(iapImageView)
+        topContainer.addSubview(titleLabel)
+        topContainer.addSubview(callToActionLabel)
+        topContainer.addSubview(termsLabel)
+        topContainer.addSubview(cancelButton)
         
-        view.addSubview(titleLabel)
-        view.addSubview(callToActionLabel)
-        view.addSubview(termsLabel)
-        view.addSubview(yearButton)
-        view.addSubview(sixMonthButton)
-        view.addSubview(monthButton)
-        // view.addSubview(stackView)
-        view.addSubview(restoreLabel)
-        view.addSubview(restoreButton)
-        view.addSubview(cancelButton)
+        bottomContainer.addSubview(yearButton)
+        bottomContainer.addSubview(sixMonthButton)
+        bottomContainer.addSubview(monthButton)
+//        bottomContainer.addSubview(restoreLabel)
+//        bottomContainer.addSubview(restoreButton)
+        bottomContainer.addSubview(restoreStackView)
+       
         
         setupConstraints()
+    }
+    private func setupStackView() {
+        restoreStackView.axis = .horizontal
+        restoreStackView.addArrangedSubview(restoreLabel)
+        restoreStackView.addArrangedSubview(restoreButton)
+        restoreStackView.spacing = 2.0
+        restoreStackView.distribution = .fillProportionally
     }
     //MARK: - Private functions
     @objc private func cancelButtonTapped() {
@@ -153,56 +181,59 @@ class SubscriptionViewController: UIViewController {
     //    }
     //MARK: - Constraints *************************************************************************************************************************
     private func setupConstraints(){
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 55.0).isActive = true
+        topContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        topContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        topContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        topContainer.heightAnchor.constraint(equalToConstant: view.frame.height / 2).isActive = true
+        
+        bottomContainer.topAnchor.constraint(equalTo: topContainer.bottomAnchor).isActive = true
+        bottomContainer.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+        bottomContainer.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
+        bottomContainer.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        iapImageView.topAnchor.constraint(equalTo: topContainer.topAnchor).isActive = true
+        iapImageView.leadingAnchor.constraint(equalTo: topContainer.leadingAnchor).isActive = true
+        iapImageView.trailingAnchor.constraint(equalTo: topContainer.trailingAnchor).isActive = true
+        iapImageView.bottomAnchor.constraint(equalTo: topContainer.bottomAnchor).isActive = true
+        
+        cancelButton.topAnchor.constraint(equalTo: topContainer.safeAreaLayoutGuide.topAnchor, constant: 5.0).isActive = true
+        cancelButton.trailingAnchor.constraint(equalTo: topContainer.trailingAnchor, constant: -15.0).isActive = true
+        cancelButton.widthAnchor.constraint(equalToConstant: 65.0).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        
+        titleLabel.centerXAnchor.constraint(equalTo: topContainer.centerXAnchor).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topContainer.topAnchor, constant: 55.0).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        callToActionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        callToActionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25.0).isActive = true
-        callToActionLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 50).isActive = true
+        callToActionLabel.centerXAnchor.constraint(equalTo: topContainer.centerXAnchor).isActive = true
+        callToActionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant:40.0).isActive = true
+        callToActionLabel.widthAnchor.constraint(equalToConstant: topContainer.frame.width - 50).isActive = true
         callToActionLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
         termsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        termsLabel.topAnchor.constraint(equalTo: callToActionLabel.bottomAnchor, constant: 25.0).isActive = true
+        termsLabel.bottomAnchor.constraint(equalTo: topContainer.bottomAnchor, constant:-5.0).isActive = true
         termsLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 50).isActive = true
         termsLabel.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
-        yearButton.topAnchor.constraint(equalTo: termsLabel.bottomAnchor, constant: 20.0).isActive = true
-        yearButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //********************* BOTTOM CONTAINER ************************************************************
+        yearButton.topAnchor.constraint(equalTo: bottomContainer.topAnchor, constant: 20.0).isActive = true
+        yearButton.centerXAnchor.constraint(equalTo: bottomContainer.centerXAnchor).isActive = true
         yearButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
         yearButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         
-        sixMonthButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        sixMonthButton.centerXAnchor.constraint(equalTo: bottomContainer.centerXAnchor).isActive = true
         sixMonthButton.topAnchor.constraint(equalTo: yearButton.bottomAnchor, constant: 15.0).isActive = true
         sixMonthButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
         sixMonthButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         
         monthButton.topAnchor.constraint(equalTo: sixMonthButton.bottomAnchor, constant: 15.0).isActive = true
-        monthButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        monthButton.centerXAnchor.constraint(equalTo: bottomContainer.centerXAnchor).isActive = true
         monthButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
         monthButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         
-        //stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //stackView.topAnchor.constraint(equalTo: termsLabel.bottomAnchor).isActive = true
-        //stackView.widthAnchor.constraint(equalToConstant: 400).isActive = true
-        //stackView.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        
-        
-        restoreLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        restoreLabel.bottomAnchor.constraint(equalTo: restoreButton.topAnchor, constant: -10.0).isActive = true
-        
-        restoreButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        restoreButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40.0).isActive = true
-        restoreButton.widthAnchor.constraint(equalToConstant: 150.0).isActive = true
-        restoreButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        
-        cancelButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5.0).isActive = true
-        cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15.0).isActive = true
-        cancelButton.widthAnchor.constraint(equalToConstant: 65.0).isActive = true
-        cancelButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        
-        
+        restoreStackView.centerXAnchor.constraint(equalTo: bottomContainer.centerXAnchor).isActive = true
+        restoreStackView.bottomAnchor.constraint(equalTo: bottomContainer.bottomAnchor).isActive = true
     }
 }
 

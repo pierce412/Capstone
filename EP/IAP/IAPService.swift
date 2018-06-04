@@ -50,35 +50,55 @@ extension IAPService: SKPaymentTransactionObserver, SKRequestDelegate {
             //print(transaction.transactionState)
             print(transaction.transactionState.status(), transaction.payment.productIdentifier)
             switch (transaction.transactionState) {
-            case .deferred: continue
-            case .failed: continue
-            case .purchasing: continue
-            case .purchased:
-                let receiptValidator = ReceiptValidator()
-                let receiptRequest = SKReceiptRefreshRequest()
-                receiptRequest.delegate = self
-                let validationResult = receiptValidator.validateReceipt()
-                switch validationResult {
-                case .success:
-                    print("A good receipt was processed")
-                    print("Unlock the content and set field in db")
-                case .error(let error):
-                    print(error)
-                    receiptRequest.start()
-                }
-                
-            case .restored: continue
+            case .deferred: handleDeferredState(for: transaction, in: queue)
+            case .failed:  handleFailedState(for: transaction, in: queue)
+            case .purchasing: handlePurchasingState(for: transaction, in: queue)
+            case .purchased: handlePurchasedState(for: transaction, in: queue)
+            case .restored: handleRestoredState(for: transaction, in: queue)
             }
         }
     }
+    func handlePurchasingState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        print("User is attempting to purchase product id: \(transaction.payment.productIdentifier)")
+    }
+    
+    func handlePurchasedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        print("User purchased product id: \(transaction.payment.productIdentifier)")
+        let receiptValidator = ReceiptValidator()
+        let receiptRequest = SKReceiptRefreshRequest()
+        receiptRequest.delegate = self
+        let validationResult = receiptValidator.validateReceipt()
+        switch validationResult {
+        case .success:
+            print("A good receipt was processed")
+            AircraftController.shared.saveToPersistentStorage()
+            
+        case .error(let error):
+            print(error)
+            receiptRequest.start()
+        }
+    }
+    
+    func handleRestoredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        print("Purchase restored for product id: \(transaction.payment.productIdentifier)")
+    }
+    
+    func handleFailedState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        print("Purchase failed for product id: \(transaction.payment.productIdentifier)")
+    }
+    
+    func handleDeferredState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        print("Purchase deferred for product id: \(transaction.payment.productIdentifier)")
+    }
+    
     func requestDidFinish(_ request: SKRequest) {
         print("Request did finish")
-//        do {
-//            //try receiptValidator.validateReceipt()
-//        } catch {
-//            // Log unsuccessful attempt and optionally begin grace period
-//            // before disabling app functionality, or simply disable features
-//        }
+        //        do {
+        //            //try receiptValidator.validateReceipt()
+        //        } catch {
+        //            // Log unsuccessful attempt and optionally begin grace period
+        //            // before disabling app functionality, or simply disable features
+        //        }
     }
     func request(_ request: SKRequest, didFailWithError error: Error) {
         print("Request did fail with error")

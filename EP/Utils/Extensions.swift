@@ -4,9 +4,9 @@ extension UIColor {
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
         return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
     }
-//    static func epYellow() -> UIColor {
-//        return UIColor(red: 253.0/255.0, green: 255.0/255.0, blue: 130.0/255.0, alpha: 1.0)
-//    }
+    static func epYellow() -> UIColor {
+        return UIColor(red: 253.0/255.0, green: 255.0/255.0, blue: 130.0/255.0, alpha: 1.0)
+    }
 //    static func epComplement() -> UIColor {
 //        return UIColor(red: 132.0/255.0, green: 130.0/255.0, blue: 255.0/255.0, alpha: 1.0)
 //    }
@@ -14,7 +14,16 @@ extension UIColor {
         return UIColor(red: 132.0/255.0, green: 130.0/255.0, blue: 255.0/255.0, alpha: 1.0)
     }
     static func buttonEnabled() -> UIColor {
-        return UIColor(red: 132.0/255.0, green: 130.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        return UIColor(red: 78.0/255.0, green: 205.0/255.0, blue: 196.0/255.0, alpha: 1.0)
+    }
+    static func buttonEnabled2() -> UIColor {
+        return UIColor(red: 3.0/255.0, green: 121.0/255.0, blue: 113.0/255.0, alpha: 1.0)
+    }
+    static func buttonEnabled3() -> UIColor {
+        return UIColor(red: 78.0/255.0, green: 205.0/255.0, blue: 196.0/255.0, alpha: 1.0)
+    }
+    static func buttonEnabled4() -> UIColor {
+        return UIColor(red: 78.0/255.0, green: 205.0/255.0, blue: 196.0/255.0, alpha: 1.0)
     }
     static func offWhite() -> UIColor {
         return UIColor(red: 249.0/255.0, green: 249.0/255.0, blue: 249.0/255.0, alpha: 1.0)
@@ -96,5 +105,16 @@ extension UIView {
         if height != 0 {
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }
+    }
+}
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

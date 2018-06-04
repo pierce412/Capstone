@@ -26,6 +26,7 @@ class LoginViewController: UIViewController {
         button.addTarget(self, action: #selector(handleLoginOrRegister), for: .touchUpInside)
         return button
     }()
+
     let logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "ap256")
@@ -54,7 +55,6 @@ class LoginViewController: UIViewController {
         tf.translatesAutoresizingMaskIntoConstraints = false
         tf.autocapitalizationType = .none
         tf.clearButtonMode = .whileEditing
-        tf
         tf.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return tf
     }()
@@ -79,36 +79,41 @@ class LoginViewController: UIViewController {
         sc.addTarget(self, action: #selector(handleLoginRegisterSegmentedControlChange), for: .valueChanged)
         return sc
     }()
-    let passwordResetLabel: UIButton = {
+    let passwordResetButton: UIButton = {
         let view = UIButton()
-        view.isUserInteractionEnabled = true
         view.setTitle("Reset password", for: .normal)
         view.addTarget(self, action: #selector(handleForgotPassword), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.setTitleColor(UIColor.offWhite(), for: .normal)
         view.titleLabel?.font = UIFont.preferredFont(forTextStyle: .caption1)
-        
         return view
     }()
     //**********************************************************************
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        loginRegisterSegmentedControl.selectedSegmentIndex = 0
+        handleLoginRegisterSegmentedControlChange()
         print("Login controller viewDidLoad")
         view.backgroundColor = UIColor.mainColorScheme1()
         view.addSubview(loginRegisterSegmentedControl)
         view.addSubview(inputsContainerView)
         view.addSubview(loginRegisterButton)
         view.addSubview(logoImageView)
-        view.addSubview(passwordResetLabel)
+        view.addSubview(passwordResetButton)
         setupLoginRegisterSegmentedControl()
         setupInputsContainerView()
         setupLoginRegisterButton()
         setupLogoImageView()
-        setupForgotPasswordButton()
+        setupPasswordRecoveryViews()
     }
     //MARK: - Local Functions
     @objc func handleForgotPassword() {
+        let destinationVC = PasswordRecoveryViewController()
+        present(destinationVC, animated: true) {
+            print("toForgotPassword executed")
+        }
         
     }
     @objc func handleLoginOrRegister() {
@@ -132,6 +137,7 @@ class LoginViewController: UIViewController {
                     print("Error alert presented to user")
                 })
                 print("Error logging in: \(String(describing: error?.localizedDescription))")
+                self.passwordTextField.text = ""
                 return
             }
             UserDefaults.standard.set(email, forKey: "email")
@@ -140,7 +146,9 @@ class LoginViewController: UIViewController {
             //self.navigationController?.pushViewController(AircraftListViewController(), animated: true)
             
             //if the logged in user is verified
-            self.dismiss(animated: true, completion: nil)
+            let navcon = UINavigationController(rootViewController: AircraftListViewController())
+            //navcon.navigationBar.isHidden = true
+            self.present(navcon, animated: true, completion: nil)
         }
     }
     //******************************************REGISTER ********************************************************
@@ -152,6 +160,8 @@ class LoginViewController: UIViewController {
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 ac.addAction(okAction)
                 self.present(ac, animated: true, completion: nil)
+                self.emailTextField.text = ""
+                self.passwordTextField.text = ""
                 print("Error in handling registration: \(String(describing: error?.localizedDescription))")
             }
             guard let uid = user?.uid else { return }
@@ -185,9 +195,7 @@ class LoginViewController: UIViewController {
                 //clear form
                 self.emailTextField.text = ""
                 self.passwordTextField.text = ""
-                
-                //self.dismiss(animated: true, completion: nil)
-                //navigationController?.pushViewController(AircraftListViewController(), animated: true)
+
             })
         }
     }
@@ -202,7 +210,8 @@ class LoginViewController: UIViewController {
         
         if isFormValid {
             loginRegisterButton.isEnabled = true
-            loginRegisterButton.backgroundColor = UIColor.mainColorScheme2()
+            loginRegisterButton.backgroundColor = UIColor.buttonGreen()
+            logoImageView.startAnimating()
         }
         else {
             loginRegisterButton.isEnabled = false
@@ -211,7 +220,7 @@ class LoginViewController: UIViewController {
     }
     private func setupInputsContainerView() {
         inputsContainerView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        inputsContainerView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        inputsContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.frame.height / 3).isActive = true
         inputsContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -30).isActive = true
         inputsContainerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         
@@ -251,13 +260,13 @@ class LoginViewController: UIViewController {
     }
     private func setupLogoImageView() {
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -50).isActive = true
+        logoImageView.bottomAnchor.constraint(equalTo: loginRegisterSegmentedControl.topAnchor, constant: -35).isActive = true
 
     }
-    private func setupForgotPasswordButton() {
-        passwordResetLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        passwordResetLabel.topAnchor.constraint(equalTo: loginRegisterButton.bottomAnchor, constant: 15).isActive = true
-        passwordResetLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        passwordResetLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    private func setupPasswordRecoveryViews() {
+        passwordResetButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        passwordResetButton.topAnchor.constraint(equalTo: loginRegisterButton.bottomAnchor, constant: 15).isActive = true
+        passwordResetButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        passwordResetButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
 }

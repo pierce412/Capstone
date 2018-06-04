@@ -14,6 +14,7 @@
 		3B2F482A20BB83680070CC79 /* pkcs7_union_accessors.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B2F482920BB83680070CC79 /* pkcs7_union_accessors.c */; };
 		3B2F482C20BB95C50070CC79 /* AppleIncRootCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 3B2F482B20BB95C50070CC79 /* AppleIncRootCertificate.cer */; };
 		3B3210AD2093731200ADF36B /* AircraftController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3210AC2093731200ADF36B /* AircraftController.swift */; };
+		3B3CBE8820C472E900EA3182 /* PasswordRecoveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3CBE8720C472E900EA3182 /* PasswordRecoveryViewController.swift */; };
 		3B4E7ABD2091619000ACA1EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7ABC2091619000ACA1EB /* Extensions.swift */; };
 		3B4E7AC12091704900ACA1EB /* EmergencyProcedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */; };
 		3B4E7AC32091769C00ACA1EB /* ProcedureStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4E7AC22091769C00ACA1EB /* ProcedureStep.swift */; };
@@ -68,6 +69,7 @@
 		3B2F482920BB83680070CC79 /* pkcs7_union_accessors.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = pkcs7_union_accessors.c; sourceTree = "<group>"; };
 		3B2F482B20BB95C50070CC79 /* AppleIncRootCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppleIncRootCertificate.cer; sourceTree = "<group>"; };
 		3B3210AC2093731200ADF36B /* AircraftController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftController.swift; sourceTree = "<group>"; };
+		3B3CBE8720C472E900EA3182 /* PasswordRecoveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordRecoveryViewController.swift; sourceTree = "<group>"; };
 		3B4E7ABC2091619000ACA1EB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3B4E7AC02091704900ACA1EB /* EmergencyProcedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmergencyProcedure.swift; sourceTree = "<group>"; };
 		3B4E7AC22091769C00ACA1EB /* ProcedureStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcedureStep.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				3B505C8520B0D42500DAD04E /* UnauthorizedUserViewController.swift */,
 				3B04B64120926272001A3E9A /* EPListViewController.swift */,
 				3B69A6B0209249B4000F0243 /* EmergencyProcedureViewController.swift */,
+				3B3CBE8720C472E900EA3182 /* PasswordRecoveryViewController.swift */,
 				3BC7B94020A4E12800BD04D7 /* View */,
 			);
 			path = "View Controller";
@@ -425,6 +428,7 @@
 				3BBCA94820A5F513003399CC /* MemoryCell.swift in Sources */,
 				3BBCA95420A638F7003399CC /* NoteCell.swift in Sources */,
 				3B4E7AC32091769C00ACA1EB /* ProcedureStep.swift in Sources */,
+				3B3CBE8820C472E900EA3182 /* PasswordRecoveryViewController.swift in Sources */,
 				3B69A6A920922C91000F0243 /* AircraftListViewController.swift in Sources */,
 				3BC0F0C6208E326B00E20519 /* AppDelegate.swift in Sources */,
 				3B505C8820B0E5EB00DAD04E /* BrickView.swift in Sources */,

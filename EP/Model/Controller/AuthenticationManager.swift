@@ -69,6 +69,27 @@ class FirebaseAuthenticationManager {
             completion(false)
         }
     }
+    func checkIfEmailVerified(){
+        
+        Auth.auth().currentUser?.reload(completion: { (err) in
+            if err == nil{
+                
+                if Auth.auth().currentUser!.isEmailVerified{
+                    
+                    print("verified: true")
+                } else {
+                    
+                    print("verified: false")
+                    
+                }
+            } else {
+                
+                print(err?.localizedDescription)
+                
+            }
+        })
+        
+    }
     
     //Email is sent to reset password
     func resetPasswordWithEmail(email: String, completion: @escaping (Error?) -> Void) {
