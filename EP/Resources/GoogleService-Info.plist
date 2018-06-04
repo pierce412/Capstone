@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>333503569394-58c1mf5co21mbiser7s9ci2fpc7m6sal.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.333503569394-58c1mf5co21mbiser7s9ci2fpc7m6sal</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDLXPgceCZjl2LAI6L6HQH6x90zm4hj8Fg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>333503569394</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.verticalendgame.EP</string>
+	<key>PROJECT_ID</key>
+	<string>emergencyprocedure-42955</string>
+	<key>STORAGE_BUCKET</key>
+	<string>emergencyprocedure-42955.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:333503569394:ios:28870a5d804c4ade</string>
+	<key>DATABASE_URL</key>
+	<string>https://emergencyprocedure-42955.firebaseio.com</string>
+</dict>
+</plist>
