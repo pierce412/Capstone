@@ -113,7 +113,11 @@ class SubscriptionViewController: UIViewController {
     let cancelButton: UIButton = {
         let view = UIButton()
         view.setTitle("Cancel", for: .normal)
-        view.setTitleColor(UIColor.mainColorScheme1(), for: .normal)
+        view.setTitleColor(UIColor.offWhite(), for: .normal)
+        view.layer.borderColor = UIColor.offWhite().cgColor
+        view.layer.borderWidth = 0.3
+        view.layer.cornerRadius = 7.0
+        view.layer.masksToBounds = true
         view.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

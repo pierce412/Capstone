@@ -14,9 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         //IAP setup
         IAPService.shared.getProducts()
-        //print("products fetched")
         SKPaymentQueue.default().add(observer)
         print("payment queue observer added")
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         let loginController = LoginViewController()
