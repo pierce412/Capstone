@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B04B53020C76A3A003DB12D /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B04B52F20C76A3A003DB12D /* ManageViewController.swift */; };
 		3B04B64220926272001A3E9A /* EPListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B04B64120926272001A3E9A /* EPListViewController.swift */; };
 		3B0E8F7F209BC4C10063B3C8 /* t6.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B0E8F7E209BC4C10063B3C8 /* t6.json */; };
 		3B2F482320BB82020070CC79 /* ReceiptValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2F482220BB82020070CC79 /* ReceiptValidator.swift */; };
@@ -61,6 +62,7 @@
 		0A16E03564E218925B886A6B /* Pods_EP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1C1EDE61C93D1DA1707787 /* Pods-EP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EP.release.xcconfig"; path = "Pods/Target Support Files/Pods-EP/Pods-EP.release.xcconfig"; sourceTree = "<group>"; };
 		3293DAD2F47A528E1FEF3A28 /* Pods-EP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EP/Pods-EP.debug.xcconfig"; sourceTree = "<group>"; };
+		3B04B52F20C76A3A003DB12D /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
 		3B04B64120926272001A3E9A /* EPListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPListViewController.swift; sourceTree = "<group>"; };
 		3B0E8F7E209BC4C10063B3C8 /* t6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = t6.json; sourceTree = "<group>"; };
 		3B2F481F20BB7E180070CC79 /* EP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EP-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				3BCD056920B8D44300CDC356 /* SubscriptionViewController.swift */,
+				3B04B52F20C76A3A003DB12D /* ManageViewController.swift */,
 				3BC0F0C7208E326B00E20519 /* LoginViewController.swift */,
 				3B69A6A820922C91000F0243 /* AircraftListViewController.swift */,
 				3B505C8520B0D42500DAD04E /* UnauthorizedUserViewController.swift */,
@@ -386,6 +389,7 @@
 				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Purchases/Purchases.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -396,6 +400,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Purchases.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -425,6 +430,7 @@
 				3B69A6B1209249B4000F0243 /* EmergencyProcedureViewController.swift in Sources */,
 				3B2F482820BB830E0070CC79 /* pkcs7_union_accessors.h in Sources */,
 				3BD3DAC520A924C400C307EE /* NoteHeaderCell.swift in Sources */,
+				3B04B53020C76A3A003DB12D /* ManageViewController.swift in Sources */,
 				3BBCA94820A5F513003399CC /* MemoryCell.swift in Sources */,
 				3BBCA95420A638F7003399CC /* NoteCell.swift in Sources */,
 				3B4E7AC32091769C00ACA1EB /* ProcedureStep.swift in Sources */,
@@ -593,10 +599,7 @@
 				DEVELOPMENT_TEAM = 4CG8J8CVZL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/EP/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.verticalendgame.EP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "EP/Model/EP-Bridging-Header.h";
@@ -617,10 +620,7 @@
 				DEVELOPMENT_TEAM = 4CG8J8CVZL;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/EP/Resources/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.verticalendgame.EP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "EP/Model/EP-Bridging-Header.h";

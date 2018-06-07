@@ -5,7 +5,7 @@ import StoreKit
 
 class SubscriptionViewController: UIViewController {
     let topContainer: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -122,6 +122,10 @@ class SubscriptionViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    let tableView: UITableView = {
+        let view = UITableView()
+        return view 
+    }()
     
     var requestProd = SKProductsRequest()
     var products = [SKProduct]()
@@ -145,10 +149,8 @@ class SubscriptionViewController: UIViewController {
         bottomContainer.addSubview(yearButton)
         bottomContainer.addSubview(sixMonthButton)
         bottomContainer.addSubview(monthButton)
-//        bottomContainer.addSubview(restoreLabel)
-//        bottomContainer.addSubview(restoreButton)
         bottomContainer.addSubview(restoreStackView)
-       
+        
         
         setupConstraints()
     }

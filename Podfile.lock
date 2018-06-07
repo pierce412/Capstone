@@ -49,6 +49,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - OpenSSL (1.0.210)
+  - Purchases (0.10.2)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Database
   - OpenSSL
+  - Purchases
   - SVProgressHUD
 
 SPEC REPOS:
@@ -75,6 +77,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - OpenSSL
+    - Purchases
     - SVProgressHUD
 
 SPEC CHECKSUMS:
@@ -91,8 +94,9 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   OpenSSL: 246ffb948e9d56466727fd318134af35f5aa764e
+  Purchases: 807a5a6622dc3f20b73f182338100f5f09ce5554
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 54e10d4c48b1c5d7f7312584ed91abaeb646cf64
+PODFILE CHECKSUM: 827cf1c11d960a37e384d73597fcb88b0cbade0a
 
 COCOAPODS: 1.5.0

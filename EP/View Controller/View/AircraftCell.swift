@@ -47,7 +47,7 @@ class AircraftCell: UITableViewCell {
         tmsImageView.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         tmsImageView.widthAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
-        stackView.leftAnchor.constraint(equalTo: tmsImageView.rightAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: tmsImageView.rightAnchor, constant: 15).isActive = true
         stackView.rightAnchor.constraint(equalTo: marginGuide.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
@@ -56,7 +56,7 @@ class AircraftCell: UITableViewCell {
         super.layoutSubviews()
         if let ac = ac {
             //print(ac.aircraftIconImageName)
-            tmsImageView.image = UIImage(named: "default")
+            tmsImageView.image = UIImage(named: ac.aircraftIconImageName)
             acLabel.text = ac.tmsName
             acLabel.textColor = UIColor.matteBlack()
             interimChangeLabel.text = ac.interimChangeID

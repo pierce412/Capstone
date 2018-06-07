@@ -2,12 +2,15 @@
 import UIKit
 import Firebase
 import NotificationCenter
+import SVProgressHUD
+
 
 class AircraftListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //MARK: - Properties
     var isVerified: Bool?
     var aircraft: [Aircraft]?
     let fetcher = ReceiptFetcher()
+    var verificationTimer : Timer = Timer()
     
     //*************** Views***************
     let container: UIView = {
@@ -31,7 +34,10 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //SVProgressHUD.show()
         //indicator.startAnimating()
+        
+        verificationTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(checkIfTheEmailIsVerified), userInfo: nil, repeats: true)
         print("Aircraft List viewDidLoad")
         print("User: \(String(describing: Auth.auth().currentUser?.uid)) is email verified: \(String(describing: Auth.auth().currentUser?.isEmailVerified))")
         print("User: \(String(describing: Auth.auth().currentUser?.email)) is valid: \(String(describing: Auth.auth().currentUser?.isEmailVerified))")
@@ -39,40 +45,27 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
         setupListTableView()
         setupViews()
-        //checkAccountStatus()
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .done, target: self, action: #selector(handleLogout))
-        guard let isVerified = Auth.auth().currentUser?.isEmailVerified else { print("Unable to determine isEmailVerified."); return }
         self.title = "Aircraft"
-        if(isVerified){
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Subscribe", style: .plain, target: self, action: #selector(handleSubscribe))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Manage", style: .plain, target: self, action: #selector(handleSubscribe))
             
-            //            else {
-            //                self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Manage", style: .plain, target: self, action: #selector(handleAccountManagement))
-            //            }
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        }
+           
     }
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        super.viewWillAppear(true)
-    //        if(Auth.auth().currentUser?.uid != nil) {
-    //            NotificationCenter.default.addObserver(self, selector: #selector(loadList), name: NSNotification.Name(rawValue: "load"), object: nil)
-    //            setupListTableView()
-    //            setupViews()
-    //        }
-    //    }
-    private func checkAccountStatus() {
-        guard let userIsVerified = Auth.auth().currentUser?.isEmailVerified else { return }
-        if(!userIsVerified){
-            let ua = UnauthorizedUserViewController()
-            ua.modalPresentationStyle = .overCurrentContext
-            present(ua, animated: true, completion: nil)
-        }
+    private func isEmailVerified() -> Bool {
+        guard let userIsVerified = Auth.auth().currentUser?.isEmailVerified else { return false }
+        return userIsVerified
     }
     @objc private func handleSubscribe() {
+        if(Auth.auth().currentUser?.isEmailVerified == false){
+            presentUnverifiedAlert()
+            return
+        }
         let destinationVC = SubscriptionViewController()
-        destinationVC.modalPresentationStyle = .overCurrentContext
-        present(destinationVC, animated: true, completion: nil)
+      destinationVC.modalPresentationStyle = .overCurrentContext
+       present(destinationVC, animated: true, completion: nil)
+        
+        //navigationController?.pushViewController(destinationVC, animated: true)
     }
     //    @objc private func handleAccountManagement() {
     //        print("Handle manage tappped")
@@ -81,7 +74,16 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     @objc private func loadList(notification: NSNotification) {
         DispatchQueue.main.async {
             self.listTableView.reloadData()
+            SVProgressHUD.dismiss()
         }
+    }
+    private func presentUnverifiedAlert() {
+        let alertCon = UIAlertController(title: "Authentication Required", message: "Please check your email for authentication link.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            print("ok tapped")
+        }
+        alertCon.addAction(okAction)
+        self.present(alertCon, animated: true, completion: nil)
     }
     @objc private func handleLogout() {
         print("Handling logout")
@@ -117,6 +119,10 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        if(Auth.auth().currentUser?.isEmailVerified == false){
+            presentUnverifiedAlert()
+            return
+        }
         let ac = AircraftController.shared.allAircraft[indexPath.row]
         let destinationVC = EPListViewController()
         destinationVC.ac = ac
@@ -127,6 +133,22 @@ class AircraftListViewController: UIViewController, UITableViewDelegate, UITable
         view.addSubview(listTableView)
         //view.addSubview(indicator)
         setupConstraints()
+    }
+    @objc func checkIfTheEmailIsVerified(){
+        Auth.auth().currentUser?.reload(completion: { (err) in
+            if err == nil{
+                if (Auth.auth().currentUser?.isEmailVerified)!{
+                    print("This user is email verified.")
+                    self.verificationTimer.invalidate()
+                    self.listTableView.reloadData()
+                    print("Is email verified \(Auth.auth().currentUser?.isEmailVerified)")
+                } else {
+                    print("It aint verified yet")
+                }
+            } else {
+                print(err?.localizedDescription)
+            }
+        })
     }
     
     private func setupConstraints() {

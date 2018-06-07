@@ -9,6 +9,7 @@
 import Foundation
 
 enum IAPProduct: String {
+    //these strings match your iTC in-app purchases
     case yearAutoRenewSubscription = "com.verticalendgame.EP.Subscription"
     case sixMonthAutoRenewSubscription = "com.verticalendgame.EP.Subscription3"
     case monthAutoRenewSubscription = "com.verticalendgame.EP.Subscription2"
