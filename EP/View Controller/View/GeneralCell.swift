@@ -9,6 +9,7 @@ class GeneralCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleToFill
         view.numberOfLines = 0
+        view.textAlignment = .justified
         view.lineBreakMode = .byWordWrapping
         view.font = UIFont.preferredFont(forTextStyle: .callout)
         return view

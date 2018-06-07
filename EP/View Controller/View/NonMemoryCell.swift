@@ -19,7 +19,7 @@ class NonMemoryCell: UITableViewCell {
         let marginGuide = contentView.layoutMarginsGuide
         
         contentView.addSubview(nonMemoryLabel)
-        nonMemoryLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 15).isActive = true
+        nonMemoryLabel.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 10).isActive = true
         nonMemoryLabel.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
         nonMemoryLabel.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         nonMemoryLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true

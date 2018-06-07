@@ -2,6 +2,7 @@
 import UIKit
 import Firebase
 import NotificationCenter
+import SVProgressHUD
 
 class AircraftController {
     var allAircraft: [Aircraft] = [] {

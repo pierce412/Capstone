@@ -13,6 +13,7 @@ pod 'SVProgressHUD'
 pod 'ChameleonFramework'
 pod 'CodableFirebase'
 pod 'OpenSSL'
+pod 'Purchases'
 end
 
 post_install do |installer|

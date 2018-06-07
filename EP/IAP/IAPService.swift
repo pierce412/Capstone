@@ -18,8 +18,6 @@ class IAPService: NSObject {
         let request = SKProductsRequest(productIdentifiers: products)
         request.delegate = self
         request.start()
-        //set this class to be the observer of the payment queue
-        //paymentQueue.add(self)
     }
     
     func purchase(product: IAPProduct) {
@@ -72,6 +70,7 @@ extension IAPService: SKPaymentTransactionObserver, SKRequestDelegate {
         case .success:
             print("A good receipt was processed")
             AircraftController.shared.saveToPersistentStorage()
+            SKPaymentQueue.default().finishTransaction(transaction)
             
         case .error(let error):
             print(error)

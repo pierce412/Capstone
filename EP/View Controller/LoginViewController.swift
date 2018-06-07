@@ -191,6 +191,7 @@ class LoginViewController: UIViewController {
                     print("alert presented to user")
                     self.loginRegisterSegmentedControl.selectedSegmentIndex = 0
                     self.loginRegisterButton.setTitle("Login", for: .normal)
+                    self.loginRegisterButton.isEnabled = false
                 })
                 //clear form
                 self.emailTextField.text = ""
